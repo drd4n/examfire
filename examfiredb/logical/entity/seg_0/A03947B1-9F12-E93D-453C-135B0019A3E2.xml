@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A03947B1-9F12-E93D-453C-135B0019A3E2" name="Exam">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:06:45 UTC</createdTime>
+<generatorID>CE7F2615-F2CF-AC29-8734-126293442705</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<engineerTo>
+<item key="F54A8A9F-8629-7AB1-E175-C092BD9295E8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ExamId" id="B8EED4AA-1C97-F37C-12A0-44961DAA6501">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:06:45 UTC</createdTime>
+<generatorID>C72CDA33-DD7E-4FCD-A650-72B53B6458BD</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<engineerTo>
+<item key="F54A8A9F-8629-7AB1-E175-C092BD9295E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TypeId" id="2D000A31-FAE9-BA17-9519-7D821672DD01">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:06:45 UTC</createdTime>
+<generatorID>404A55A6-03B2-05F9-2871-1FD7B7DCAF4E</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<engineerTo>
+<item key="F54A8A9F-8629-7AB1-E175-C092BD9295E8" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TypeId1" id="BE3DDF82-3D76-60D6-29B9-23360DDB8DCF">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:11:50 UTC</createdTime>
+<generatorID>02EEB670-F98C-D7DD-42BB-965B871691F7</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<engineerTo>
+<item key="F54A8A9F-8629-7AB1-E175-C092BD9295E8" value="true"/>
+</engineerTo>
+<referedAttribute>15EC2ECB-8562-D18D-2884-04B29D58434D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="StudentId" id="32BB322A-372E-7F23-C3F2-A6800E433CE7">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:13:51 UTC</createdTime>
+<generatorID>001A6DC2-72DF-C052-4D50-7D0BBEE6E80D</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<engineerTo>
+<item key="F54A8A9F-8629-7AB1-E175-C092BD9295E8" value="true"/>
+</engineerTo>
+<referedAttribute>433C853A-9DED-AA98-4D63-932E1258F631</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E859EC50-9960-A4B2-E17C-2AE6EFF63F4D" name="Exam PK">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:06:45 UTC</createdTime>
+<generatorID>9CED0981-A6A0-7D0A-7DAA-00B7B491DB33</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="F54A8A9F-8629-7AB1-E175-C092BD9295E8" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B8EED4AA-1C97-F37C-12A0-44961DAA6501</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

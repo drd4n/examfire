@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="56996BBF-E79C-5E60-E9F5-F0CE9EE95F98" name="Students">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:19:13 UTC</createdTime>
+<generatorID>BEB16FD0-19E3-152F-1269-C9681A749499</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="StudentId" id="F21CF599-8728-A0EC-601C-906D54192676">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:19:13 UTC</createdTime>
+<generatorID>433C853A-9DED-AA98-4D63-932E1258F631</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="E45A58DF-D939-BC5B-0EEC-FC6E5FB67B74">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:19:13 UTC</createdTime>
+<generatorID>64FB52EF-B609-99E2-6EDE-B7EE9CDC23BA</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>55</dataTypeSize>
+<ownDataTypeParameters>55,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Password" id="3C06FCC4-2D52-C932-6EFF-F2976C75DCAD">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:19:13 UTC</createdTime>
+<generatorID>8C0980C1-3313-04B2-B739-71A213A07F15</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>21</dataTypeSize>
+<ownDataTypeParameters>21,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="588DA994-1762-CA6B-6A14-2C02D33BEDD1" name="Students_PK">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:19:13 UTC</createdTime>
+<generatorID>D44D6149-AD85-C4BD-83BC-7C4E0E847CEC</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F21CF599-8728-A0EC-601C-906D54192676"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

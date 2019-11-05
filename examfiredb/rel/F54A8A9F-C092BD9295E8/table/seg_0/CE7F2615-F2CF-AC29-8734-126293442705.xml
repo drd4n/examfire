@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CE7F2615-F2CF-AC29-8734-126293442705" name="Exam">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:42:52 UTC</createdTime>
+<ownerDesignName>examfiredb</ownerDesignName>
+<ordsAlias>table_3</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ExamId" id="C72CDA33-DD7E-4FCD-A650-72B53B6458BD">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:43:40 UTC</createdTime>
+<ownerDesignName>examfiredb</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TypeId" id="404A55A6-03B2-05F9-2871-1FD7B7DCAF4E">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:47:12 UTC</createdTime>
+<ownerDesignName>examfiredb</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ExamType_TypeId" id="B3367199-0243-3BC9-8145-36C9AC1196C5">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:14:27 UTC</createdTime>
+<generatorID>BE3DDF82-3D76-60D6-29B9-23360DDB8DCF</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="227A1390-B86D-3B46-8BD3-C2AC55B1EFA0" referredColumn="66810473-36F2-DA91-BFAA-C55499067D7D"/>
+</associations>
+</Column>
+<Column name="Students_StudentId" id="59169E18-559D-DF2C-90F5-20B7CEF0E8B4">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:14:27 UTC</createdTime>
+<generatorID>32BB322A-372E-7F23-C3F2-A6800E433CE7</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="98AEF1FA-FFED-A649-44CA-6AE893C6F5B2" referredColumn="F21CF599-8728-A0EC-601C-906D54192676"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9CED0981-A6A0-7D0A-7DAA-00B7B491DB33" name="Exam_PK">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:43:40 UTC</createdTime>
+<ownerDesignName>examfiredb</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C72CDA33-DD7E-4FCD-A650-72B53B6458BD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="45841019-5614-3314-7A38-CEEB66CD0694" name="Exam__IDX">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:14:27 UTC</createdTime>
+<ownerDesignName>examfiredb</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>02EEB670-F98C-D7DD-42BB-965B871691F7</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="B3367199-0243-3BC9-8145-36C9AC1196C5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D264BF5D-8747-FA13-0A20-0BD31F3EA102" name="Exam_ExamType_FK">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:14:27 UTC</createdTime>
+<generatorID>02EEB670-F98C-D7DD-42BB-965B871691F7</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B3367199-0243-3BC9-8145-36C9AC1196C5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="277B52F4-D5B7-391A-B892-FF4F7792A278" name="Exam_Students_FK">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:14:27 UTC</createdTime>
+<generatorID>001A6DC2-72DF-C052-4D50-7D0BBEE6E80D</generatorID>
+<ownerDesignName>examfiredb</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59169E18-559D-DF2C-90F5-20B7CEF0E8B4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

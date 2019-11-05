@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="5C90559C-3011-7803-ECB6-41C77C4A91C7" mainViewID="DA509FB6-08B5-954B-ABA8-2D731E50F2FA">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 12:01:43 UTC</createdTime>
+<ownerDesignName>examfiredb</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

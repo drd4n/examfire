@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_3" directorySegmentName="seg_0" id="001A6DC2-72DF-C052-4D50-7D0BBEE6E80D">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 16:13:51 UTC</createdTime>
+<ownerDesignName>examfiredb</ownerDesignName>
+<engineerTo>
+<item key="F54A8A9F-8629-7AB1-E175-C092BD9295E8" value="true"/>
+</engineerTo>
+<sourcePk>D44D6149-AD85-C4BD-83BC-7C4E0E847CEC</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>BEB16FD0-19E3-152F-1269-C9681A749499</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>A03947B1-9F12-E93D-453C-135B0019A3E2</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="24EFE69F-5B2C-7B9E-C72C-FB422F1A533E" name="ExamType">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:47:26 UTC</createdTime>
+<ownerDesignName>examfiredb</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="TypeId" id="66810473-36F2-DA91-BFAA-C55499067D7D">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:48:44 UTC</createdTime>
+<ownerDesignName>examfiredb</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="typeNAme" id="F7EE6F15-7F5B-8519-DD14-8676FD2FCE1F">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:48:44 UTC</createdTime>
+<ownerDesignName>examfiredb</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6BBA933A-84F0-9776-2C17-2DCD8C6DA8F8" name="ExamType_PK">
+<createdBy>Dan</createdBy>
+<createdTime>2019-11-05 15:48:44 UTC</createdTime>
+<ownerDesignName>examfiredb</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="66810473-36F2-DA91-BFAA-C55499067D7D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
