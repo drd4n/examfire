@@ -1,4 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<oracle.dbtools.crest.model.design.logical.LogicalDesign>
-   <object objectType="Entity" objectID="BEB16FD0-19E3-152F-1269-C9681A749499" name="Students" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="5C90559C-3011-7803-ECB6-41C77C4A91C7" propertySourceId="" propertyTargetId=""/>
-</oracle.dbtools.crest.model.design.logical.LogicalDesign>
