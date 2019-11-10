@@ -8,7 +8,7 @@ CREATE TABLE users (
 
 CREATE TABLE exam (
 	examid INT NOT NULL,
-	subjectid VARCHAR(35) NOT NULL,
+	subjectid INT NOT NULL,
 	uesrid INT NOT NULL,
 	constraint EXAM_PK PRIMARY KEY (examid));
 
@@ -32,16 +32,16 @@ CREATE TABLE choice (
 	choiceid VARCHAR(255) NOT NULL,
 	question VARCHAR(255) NOT NULL,
 	answer VARCHAR(255) NOT NULL,
-	setid INT NOT NULL,
+	choicesetid INT NOT NULL,
 	constraint CHOICE_PK PRIMARY KEY (choiceid));
 
 
 
-CREATE TABLE set (
-	setid INT NOT NULL,
+CREATE TABLE choiceset (
+	choicesetid INT NOT NULL,
 	title VARCHAR(255) NOT NULL,
 	examid INT NOT NULL,
-	constraint SET_PK PRIMARY KEY (setid));
+	constraint SET_PK PRIMARY KEY (choicesetid));
 
 
 
@@ -53,13 +53,10 @@ ALTER TABLE Exam ADD CONSTRAINT Exam_fk1 FOREIGN KEY (uesrid) REFERENCES Users(u
 ALTER TABLE Score ADD CONSTRAINT Score_fk0 FOREIGN KEY (userid) REFERENCES Users(userid);
 ALTER TABLE Score ADD CONSTRAINT Score_fk1 FOREIGN KEY (examid) REFERENCES Exam(examid);
 
-ALTER TABLE choice ADD CONSTRAINT choice_fk0 FOREIGN KEY (setid) REFERENCES Set(setid);
+ALTER TABLE choice ADD CONSTRAINT Choice_fk0 FOREIGN KEY (choicesetid) REFERENCES choiceset(choicesetid);
 
-ALTER TABLE Set ADD CONSTRAINT Set_fk0 FOREIGN KEY (examid) REFERENCES Exam(examid);
+ALTER TABLE choiceset ADD CONSTRAINT Choiceset_fk0 FOREIGN KEY (examid) REFERENCES Exam(examid);
 
-insert into Users (username, password, userfullname) values ('alibi', 'lacinia', 'Catalina Coco');
-insert into  Users (username, password, userfullname) values ('eto', 'suspendisse', 'Alibi Jaja');
-insert into  Users (username, password, userfullname) values ('finn', 'vehicula', 'Eto Saka');
-insert into Users (username, password, userfullname) values ('accumsan', 'Deafinealy Dope');
+
 insert into Users (username, password, userfullname) values ('deafinealy', 'quisque', 'Deafinealy Dope');
-insert into Users (username, password, userfullname) values ('babba', 'quam', 'Alibi Jaja');
+insert into Users (username, password, userfullname) values ('babba', 'quam', 'Babba Gump');
