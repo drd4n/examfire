@@ -9,14 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Login</title>
     </head>
     <body>
         <h1>Examfire Login</h1>
         <form action="Login" method="post">
-            <input type="text" name="username">
-            <input type="password" name="password">
+            <label>Username : </label><input type="text" name="username"><br>
+            <label>Password : </label><input type="password" name="password"><br>
             <input type="submit" value="Login">
+            <p>You don't have an account? <a href="/Examfire/Register">Register Here!</a></p>
         </form>
     </body>
 </html>
