@@ -5,20 +5,30 @@
  */
 package servlet;
 
+import controller.model.UsersJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
+import model.Users;
 
 /**
  *
  * @author Dan
  */
 public class LoginServlet extends HttpServlet {
-
+    @PersistenceUnit(name = "ExamfirePU")
+    EntityManagerFactory emf;
+    
+    @Resource
+    UserTransaction utx;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,8 +41,20 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
             
-        
+            UsersJpaController ujc = new UsersJpaController(utx, emf);
+            Users usr = ujc.findByUsername(username);
+            if(usr == null){
+                request.setAttribute("message", "Wrong!");
+                request.getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
+            }
+            if(password.equals(usr.getPassword())){
+                HttpSession ses = request.getSession();
+                ses.setAttribute("user", usr);
+                request.getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
