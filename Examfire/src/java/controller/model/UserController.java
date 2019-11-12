@@ -19,12 +19,12 @@ import model.User;
  * @author Dan
  */
 public class UserController {
-    private final static String FIND_BY_ID = "select * from users where userid = ?";
     private final static String FIND_BY_USERNAME = "select * from users where username = ?";
+    private final static String REGISTER= "insert into users (username, password, userfullname, email) values (?, ?, ?, ?);";
     
     static User CastResultSetToUser(ResultSet rs) {
         try {
-            User usr = new User(rs.getInt("USERID"), rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getString("USERFULLNAME"));
+            User usr = new User(rs.getInt("USERID"), rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getString("USERFULLNAME"), rs.getString("EMAIL"));
             if (usr.getUserId() != 0) {
                 return usr;
             }
@@ -52,4 +52,19 @@ public class UserController {
         }
         return usr;
 }
+    public void RegisterUser(User user){
+        Connection con = DatabaseConnection.getConnection();
+        try {
+            PreparedStatement pst = con.prepareStatement(REGISTER);
+            pst.setString(1, user.getUsername());
+            pst.setString(2, user.getPassword());
+            pst.setString(3, user.getUserFullName());
+            pst.setString(4, user.getEmail());
+            pst.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }
