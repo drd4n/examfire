@@ -38,9 +38,7 @@ CREATE TABLE choiceset (
 
 
 
-
-ALTER TABLE Exam ADD CONSTRAINT Exam_fk0 FOREIGN KEY (subjectid) REFERENCES Subjects(subjectid);
-ALTER TABLE Exam ADD CONSTRAINT Exam_fk1 FOREIGN KEY (uesrid) REFERENCES Users(userid);
+ALTER TABLE Exam ADD CONSTRAINT Exam_fk0 FOREIGN KEY (uesrid) REFERENCES Users(userid);
 
 
 ALTER TABLE Score ADD CONSTRAINT Score_fk0 FOREIGN KEY (userid) REFERENCES Users(userid);
