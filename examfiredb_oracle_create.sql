@@ -3,22 +3,15 @@ CREATE TABLE users (
 	username VARCHAR(21) NOT NULL,
 	password VARCHAR(21) NOT NULL,
 	userfullname VARCHAR(60) NOT NULL,
+	email VARCHAR(50) NOT NULL,
 	constraint USERS_PK PRIMARY KEY (userid));
 
 
 CREATE TABLE exam (
 	examid INT NOT NULL,
-	subjectid INT NOT NULL,
+	examtitle VARCHAR(50) NOT NULL,
 	uesrid INT NOT NULL,
 	constraint EXAM_PK PRIMARY KEY (examid));
-
-
-
-CREATE TABLE subjects (
-	subjectid INT NOT NULL,
-	subjectname VARCHAR(25) NOT NULL,
-	constraint SUBJECTS_PK PRIMARY KEY (subjectid));
-
 
 
 CREATE TABLE score (
@@ -58,5 +51,5 @@ ALTER TABLE choice ADD CONSTRAINT Choice_fk0 FOREIGN KEY (choicesetid) REFERENCE
 ALTER TABLE choiceset ADD CONSTRAINT Choiceset_fk0 FOREIGN KEY (examid) REFERENCES Exam(examid);
 
 
-insert into Users (username, password, userfullname) values ('deafinealy', 'quisque', 'Deafinealy Dope');
-insert into Users (username, password, userfullname) values ('babba', 'quam', 'Babba Gump');
+insert into Users (username, password, userfullname, email) values ('deafinealy', 'quisque', 'Deafinealy Dope', 'dopeme@hotmail.co.th');
+insert into Users (username, password, userfullname, email) values ('babba', 'quam', 'Babba Gump', 'babbagumpcompany@gmail.com');

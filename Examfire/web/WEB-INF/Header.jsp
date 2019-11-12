@@ -14,5 +14,6 @@
     <body>
         <h1>Welcome to Examfire!</h1>
         <h2>${message}</h2>
+        <hr>
     </body>
 </html>
