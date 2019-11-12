@@ -8,17 +8,9 @@ CREATE TABLE users (
 
 CREATE TABLE exam (
 	examid INT NOT NULL,
-	subjectid INT NOT NULL,
+	examtitle VARCHAR(50) NOT NULL,
 	uesrid INT NOT NULL,
 	constraint EXAM_PK PRIMARY KEY (examid));
-
-
-
-CREATE TABLE subjects (
-	subjectid INT NOT NULL,
-	subjectname VARCHAR(25) NOT NULL,
-	constraint SUBJECTS_PK PRIMARY KEY (subjectid));
-
 
 
 CREATE TABLE score (
