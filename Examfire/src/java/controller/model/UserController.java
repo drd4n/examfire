@@ -20,7 +20,7 @@ import model.User;
  */
 public class UserController {
     private final static String FIND_BY_USERNAME = "select * from users where username = ?";
-    private final static String REGISTER= "insert into users (username, password, userfullname, email) values (?, ?, ?, ?);";
+    private final static String REGISTER= "insert into EXAMFIRE.USERS(username, password, userfullname, email) values (?, ?, ?, ?)";
     
     static User CastResultSetToUser(ResultSet rs) {
         try {
@@ -61,7 +61,8 @@ public class UserController {
             pst.setString(3, user.getUserFullName());
             pst.setString(4, user.getEmail());
             pst.executeUpdate();
-            
+            pst.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }

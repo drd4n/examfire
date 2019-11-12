@@ -46,7 +46,17 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         
         UserController usc = new UserController();
+        
+//        if(username.equals(usc.findByUsername(username).getUsername())){
+//            request.setAttribute("message", "This username used");
+//            getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").forward(request, response);
+//        }
+        
         User u = new User(username, password, userfullname, email);
+        usc.RegisterUser(u);
+        request.setAttribute("message", "Register Sus ses ful ly");
+        getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
+        
         
         
     }

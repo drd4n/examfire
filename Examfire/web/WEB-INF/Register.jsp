@@ -15,9 +15,9 @@
         <h1>Register</h1>
         <h2>${message}</h2>
         <hr>
-        <form action="/Register" method="post">
+        <form action="/Examfire/Register" method="post">
             <label>Name</label><input type="text" name="userfullname"><br>
-            <label>E-Mail</label><input type="text" name="email"><br>
+            <label>E-Mail</label><input type="email" name="email"><br>
             <label>Username</label><input type="text" name="username"><br>
             <label>Password</label><input type="password" name="password"><br>
             <label>Confirm Password</label><input type="password" name="cfpassword"><br>
