@@ -9,6 +9,9 @@ import connection.database.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.User;
 
 /**
@@ -19,15 +22,34 @@ public class UserController {
     private final static String FIND_BY_ID = "select * from users where userid = ?";
     private final static String FIND_BY_USERNAME = "select * from users where username = ?";
     
-    public User findById(int id){
+    static User ResultSetToUser(ResultSet rs) {
+        try {
+            User usr = new User(rs.getInt("USERID"), rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getString("USERFULLNAME"));
+            if (usr.getUserId() != 0) {
+                return usr;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
+    public User findByUsername(String username){
         User usr = null;
         Connection con = DatabaseConnection.getConnection();
         try {
-            PreparedStatement pst = con.prepareStatement(FIND_BY_ID);
-            pst.setInt(1, id);
+            PreparedStatement pst = con.prepareStatement(FIND_BY_USERNAME);
+            pst.setString(1, username);
             ResultSet rs = pst.executeQuery();
-        }catch{
-            
+            if(rs.next()){
+                usr = ResultSetToUser(rs);
+            }
+            rs.close();
+            con.close();
+        }catch(SQLException ex){
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return usr;
 }
 }
