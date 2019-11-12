@@ -5,7 +5,6 @@
  */
 package servlet;
 
-import controller.model.UserController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,13 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.User;
 
 /**
  *
  * @author Dan
  */
-public class LoginServlet extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,21 +31,11 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        UserController usc = new UserController();
-        User user = usc.findByUsername(username);
-
-        if (user == null) {
-            request.setAttribute("message", "Wrong username or password!");
-            getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
-        }
-        if (password.equals(user.getPassword())) {
-            getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
-        }
-        request.setAttribute("message", "Wrong username or password!");
-        getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
+            
+        HttpSession session = request.getSession(false);
+        session.invalidate();
+        request.setAttribute("message", "Logged out Successfully");
+        getServletContext().getRequestDispatcher("/WEB-INF/view/Login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,15 +50,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        if (session == null) {
-            getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
-        }
-        if (session.getAttribute("user") == null) {
-            getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
-        }
-        getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
-
+        processRequest(request, response);
     }
 
     /**

@@ -22,7 +22,7 @@ public class UserController {
     private final static String FIND_BY_ID = "select * from users where userid = ?";
     private final static String FIND_BY_USERNAME = "select * from users where username = ?";
     
-    static User ResultSetToUser(ResultSet rs) {
+    static User CastResultSetToUser(ResultSet rs) {
         try {
             User usr = new User(rs.getInt("USERID"), rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getString("USERFULLNAME"));
             if (usr.getUserId() != 0) {
@@ -43,7 +43,7 @@ public class UserController {
             pst.setString(1, username);
             ResultSet rs = pst.executeQuery();
             if(rs.next()){
-                usr = ResultSetToUser(rs);
+                usr = CastResultSetToUser(rs);
             }
             rs.close();
             con.close();

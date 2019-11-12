@@ -3,6 +3,7 @@ CREATE TABLE users (
 	username VARCHAR(21) NOT NULL,
 	password VARCHAR(21) NOT NULL,
 	userfullname VARCHAR(60) NOT NULL,
+	email VARCHAR(50) NOT NULL,
 	constraint USERS_PK PRIMARY KEY (userid));
 
 
@@ -50,5 +51,5 @@ ALTER TABLE choice ADD CONSTRAINT Choice_fk0 FOREIGN KEY (choicesetid) REFERENCE
 ALTER TABLE choiceset ADD CONSTRAINT Choiceset_fk0 FOREIGN KEY (examid) REFERENCES Exam(examid);
 
 
-insert into Users (username, password, userfullname) values ('deafinealy', 'quisque', 'Deafinealy Dope');
-insert into Users (username, password, userfullname) values ('babba', 'quam', 'Babba Gump');
+insert into Users (username, password, userfullname, email) values ('deafinealy', 'quisque', 'Deafinealy Dope', 'dopeme@hotmail.co.th');
+insert into Users (username, password, userfullname, email) values ('babba', 'quam', 'Babba Gump', 'babbagumpcompany@gmail.com');
