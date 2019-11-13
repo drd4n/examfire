@@ -14,6 +14,6 @@
     </head>
     <body>
         <jsp:include page="/WEB-INF/Header.jsp" />
-        <h1>${users.getUserfullname()}</h1>
+        <h1>${user.getUserfullname()}</h1>
     </body>
 </html>
