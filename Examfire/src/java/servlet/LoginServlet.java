@@ -44,6 +44,8 @@ public class LoginServlet extends HttpServlet {
             getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
         }
         if (password.equals(user.getPassword())) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
             getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
         }
         request.setAttribute("message", "Wrong username or password!");

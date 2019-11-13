@@ -14,6 +14,7 @@
          <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     </head>
     <body>
-        <h1>Welcome to Examfire!</h1>
+        <jsp:include page="/WEB-INF/Header.jsp" />
+        <h1>${user.getUserFullName()}</h1>
     </body>
 </html>
