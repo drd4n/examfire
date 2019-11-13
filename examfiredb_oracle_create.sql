@@ -10,7 +10,7 @@ CREATE TABLE users (
 CREATE TABLE exam (
 	examid INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 	examtitle VARCHAR(50) NOT NULL,
-	uesrid INT NOT NULL,
+	uesrid INT,
 	constraint EXAM_PK PRIMARY KEY (examid));
 
 
