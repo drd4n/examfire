@@ -47,21 +47,22 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
         EntityManager em = emf.createEntityManager();
         Query q = em.createNamedQuery("Users.findByUsername");
         q.setParameter("username", username);
-        Users usr = (Users) q.getResultList().get(0);
-        if (username.equals(usr.getUsername())) {
-            if (password.equals(usr.getPassword())) {
-            HttpSession ses = request.getSession();
-            ses.setAttribute("user", usr);
-            request.getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
+        try {
+            Users usr = (Users) q.getResultList().get(0);
+            if (username.equals(usr.getUsername())) {
+                if (password.equals(usr.getPassword())) {
+                    HttpSession ses = request.getSession();
+                    ses.setAttribute("user", usr);
+                    response.sendRedirect("/Examfire/Home");
+                }
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            request.setAttribute("message", "Your username or password Wrong!");
+            getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
         }
-        }
-        
-        request.setAttribute("message", "Wrong!");
-        request.getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
 
     }
 
