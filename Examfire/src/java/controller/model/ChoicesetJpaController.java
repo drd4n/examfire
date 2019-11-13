@@ -7,7 +7,6 @@ package controller.model;
 
 import controller.model.exceptions.IllegalOrphanException;
 import controller.model.exceptions.NonexistentEntityException;
-import controller.model.exceptions.PreexistingEntityException;
 import controller.model.exceptions.RollbackFailureException;
 import java.io.Serializable;
 import javax.persistence.Query;
@@ -40,7 +39,7 @@ public class ChoicesetJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Choiceset choiceset) throws PreexistingEntityException, RollbackFailureException, Exception {
+    public void create(Choiceset choiceset) throws RollbackFailureException, Exception {
         if (choiceset.getChoiceList() == null) {
             choiceset.setChoiceList(new ArrayList<Choice>());
         }
@@ -79,9 +78,6 @@ public class ChoicesetJpaController implements Serializable {
                 utx.rollback();
             } catch (Exception re) {
                 throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
-            if (findChoiceset(choiceset.getChoicesetid()) != null) {
-                throw new PreexistingEntityException("Choiceset " + choiceset + " already exists.", ex);
             }
             throw ex;
         } finally {

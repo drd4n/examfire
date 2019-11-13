@@ -201,7 +201,6 @@ public class UsersJpaController implements Serializable {
         }
     }
 
-    
     public Users findUsers(Integer id) {
         EntityManager em = getEntityManager();
         try {

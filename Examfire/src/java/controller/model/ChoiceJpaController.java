@@ -6,7 +6,6 @@
 package controller.model;
 
 import controller.model.exceptions.NonexistentEntityException;
-import controller.model.exceptions.PreexistingEntityException;
 import controller.model.exceptions.RollbackFailureException;
 import java.io.Serializable;
 import java.util.List;
@@ -37,7 +36,7 @@ public class ChoiceJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Choice choice) throws PreexistingEntityException, RollbackFailureException, Exception {
+    public void create(Choice choice) throws RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
@@ -58,9 +57,6 @@ public class ChoiceJpaController implements Serializable {
                 utx.rollback();
             } catch (Exception re) {
                 throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
-            if (findChoice(choice.getChoiceid()) != null) {
-                throw new PreexistingEntityException("Choice " + choice + " already exists.", ex);
             }
             throw ex;
         } finally {
@@ -100,7 +96,7 @@ public class ChoiceJpaController implements Serializable {
             }
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                String id = choice.getChoiceid();
+                Integer id = choice.getChoiceid();
                 if (findChoice(id) == null) {
                     throw new NonexistentEntityException("The choice with id " + id + " no longer exists.");
                 }
@@ -113,7 +109,7 @@ public class ChoiceJpaController implements Serializable {
         }
     }
 
-    public void destroy(String id) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void destroy(Integer id) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
@@ -170,7 +166,7 @@ public class ChoiceJpaController implements Serializable {
         }
     }
 
-    public Choice findChoice(String id) {
+    public Choice findChoice(Integer id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Choice.class, id);

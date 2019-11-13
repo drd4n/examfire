@@ -52,15 +52,14 @@ public class LoginServlet extends HttpServlet {
         Query q = em.createNamedQuery("Users.findByUsername");
         q.setParameter("username", username);
         Users usr = (Users) q.getResultList().get(0);
-        if (usr == null) {
-            request.setAttribute("message", "Wrong!");
-            request.getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
-        }
-        if (password.equals(usr.getPassword())) {
+        if (username.equals(usr.getUsername())) {
+            if (password.equals(usr.getPassword())) {
             HttpSession ses = request.getSession();
             ses.setAttribute("user", usr);
             request.getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
         }
+        }
+        
         request.setAttribute("message", "Wrong!");
         request.getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
 

@@ -13,6 +13,8 @@
     </head>
     <body>
         <h1>Examfire Login</h1>
+        <h2>${message}</h2>
+        <hr>
         <form action="Login" method="post">
             <label>Username : </label><input type="text" name="username"><br>
             <label>Password : </label><input type="password" name="password"><br>

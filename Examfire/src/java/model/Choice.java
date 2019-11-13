@@ -8,6 +8,8 @@ package model;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -32,10 +34,9 @@ public class Choice implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    private String choiceid;
+    private Integer choiceid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -51,21 +52,21 @@ public class Choice implements Serializable {
     public Choice() {
     }
 
-    public Choice(String choiceid) {
+    public Choice(Integer choiceid) {
         this.choiceid = choiceid;
     }
 
-    public Choice(String choiceid, String question, String answer) {
+    public Choice(Integer choiceid, String question, String answer) {
         this.choiceid = choiceid;
         this.question = question;
         this.answer = answer;
     }
 
-    public String getChoiceid() {
+    public Integer getChoiceid() {
         return choiceid;
     }
 
-    public void setChoiceid(String choiceid) {
+    public void setChoiceid(Integer choiceid) {
         this.choiceid = choiceid;
     }
 

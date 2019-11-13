@@ -32,7 +32,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Users.findByUserid", query = "SELECT u FROM Users u WHERE u.userid = :userid")
     , @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
     , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")
-    , @NamedQuery(name = "Users.findByUserfullname", query = "SELECT u FROM Users u WHERE u.userfullname = :userfullname")})
+    , @NamedQuery(name = "Users.findByUserfullname", query = "SELECT u FROM Users u WHERE u.userfullname = :userfullname")
+    , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,6 +53,11 @@ public class Users implements Serializable {
     @NotNull
     @Size(min = 1, max = 60)
     private String userfullname;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    private String email;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "uesrid")
     private List<Exam> examList;
 
@@ -61,12 +67,20 @@ public class Users implements Serializable {
     public Users(Integer userid) {
         this.userid = userid;
     }
+    
+    public Users(String username, String password, String userfullname, String email) {
+        this.username = username;
+        this.password = password;
+        this.userfullname = userfullname;
+        this.email = email;
+    }
 
-    public Users(Integer userid, String username, String password, String userfullname) {
+    public Users(Integer userid, String username, String password, String userfullname, String email) {
         this.userid = userid;
         this.username = username;
         this.password = password;
         this.userfullname = userfullname;
+        this.email = email;
     }
 
     public Integer getUserid() {
@@ -99,6 +113,14 @@ public class Users implements Serializable {
 
     public void setUserfullname(String userfullname) {
         this.userfullname = userfullname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @XmlTransient

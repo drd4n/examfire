@@ -10,10 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Examfire Home</title>
-         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+         
     </head>
     <body>
-        <h1>Welcome to Examfire!</h1>
+        <jsp:include page="/WEB-INF/Header.jsp" />
+        <h1>${users.getUserfullname()}</h1>
     </body>
 </html>
