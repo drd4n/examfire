@@ -54,12 +54,12 @@ public class UsersJpaController implements Serializable {
             users.setExamList(attachedExamList);
             em.persist(users);
             for (Exam examListExam : users.getExamList()) {
-                Users oldUesridOfExamListExam = examListExam.getUesrid();
-                examListExam.setUesrid(users);
+                Users oldUseridOfExamListExam = examListExam.getUserid();
+                examListExam.setUserid(users);
                 examListExam = em.merge(examListExam);
-                if (oldUesridOfExamListExam != null) {
-                    oldUesridOfExamListExam.getExamList().remove(examListExam);
-                    oldUesridOfExamListExam = em.merge(oldUesridOfExamListExam);
+                if (oldUseridOfExamListExam != null) {
+                    oldUseridOfExamListExam.getExamList().remove(examListExam);
+                    oldUseridOfExamListExam = em.merge(oldUseridOfExamListExam);
                 }
             }
             utx.commit();
@@ -91,7 +91,7 @@ public class UsersJpaController implements Serializable {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Exam " + examListOldExam + " since its uesrid field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Exam " + examListOldExam + " since its userid field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
@@ -107,12 +107,12 @@ public class UsersJpaController implements Serializable {
             users = em.merge(users);
             for (Exam examListNewExam : examListNew) {
                 if (!examListOld.contains(examListNewExam)) {
-                    Users oldUesridOfExamListNewExam = examListNewExam.getUesrid();
-                    examListNewExam.setUesrid(users);
+                    Users oldUseridOfExamListNewExam = examListNewExam.getUserid();
+                    examListNewExam.setUserid(users);
                     examListNewExam = em.merge(examListNewExam);
-                    if (oldUesridOfExamListNewExam != null && !oldUesridOfExamListNewExam.equals(users)) {
-                        oldUesridOfExamListNewExam.getExamList().remove(examListNewExam);
-                        oldUesridOfExamListNewExam = em.merge(oldUesridOfExamListNewExam);
+                    if (oldUseridOfExamListNewExam != null && !oldUseridOfExamListNewExam.equals(users)) {
+                        oldUseridOfExamListNewExam.getExamList().remove(examListNewExam);
+                        oldUseridOfExamListNewExam = em.merge(oldUseridOfExamListNewExam);
                     }
                 }
             }
@@ -156,7 +156,7 @@ public class UsersJpaController implements Serializable {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Users (" + users + ") cannot be destroyed since the Exam " + examListOrphanCheckExam + " in its examList field has a non-nullable uesrid field.");
+                illegalOrphanMessages.add("This Users (" + users + ") cannot be destroyed since the Exam " + examListOrphanCheckExam + " in its examList field has a non-nullable userid field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

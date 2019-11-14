@@ -58,7 +58,7 @@ public class Users implements Serializable {
     @NotNull
     @Size(min = 1, max = 50)
     private String email;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "uesrid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userid")
     private List<Exam> examList;
 
     public Users() {
@@ -67,7 +67,7 @@ public class Users implements Serializable {
     public Users(Integer userid) {
         this.userid = userid;
     }
-    
+
     public Users(String username, String password, String userfullname, String email) {
         this.username = username;
         this.password = password;
@@ -156,5 +156,5 @@ public class Users implements Serializable {
     public String toString() {
         return "model.Users[ userid=" + userid + " ]";
     }
-    
+
 }
