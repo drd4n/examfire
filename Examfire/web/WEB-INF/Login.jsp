@@ -17,7 +17,7 @@
         <title>Login</title>
     </head>
     <body class="bg-secondary">
-        <div class="text-center bg-dark justify-content-center" style="border-radius: 50px; margin: 80px 100px 0px 100px;" >
+        <div class="text-center bg-dark justify-content-center" style="box-shadow: 2px 2px 10px red; border-radius: 50px; margin: 80px 100px 0px 100px;" >
             <div class="row">
                 <div class="col">
 
