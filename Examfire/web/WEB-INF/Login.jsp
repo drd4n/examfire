@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col">
 
-                    <img src="images/EF_Logo_withT.png" alt="examfire" style="width: auto; height: 300px; margin-top: 10px;">
+                    <img src="images/EF_Logo_withT.png" alt="examfire_big_logo" style="width: auto; height: 300px; margin-top: 10px;">
                 </div>
             </div>
             <div class="row">
