@@ -46,9 +46,9 @@ public class Exam implements Serializable {
     private String examtitle;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "examid")
     private List<Choiceset> choicesetList;
-    @JoinColumn(name = "UESRID", referencedColumnName = "USERID")
+    @JoinColumn(name = "USERID", referencedColumnName = "USERID")
     @ManyToOne(optional = false)
-    private Users uesrid;
+    private Users userid;
 
     public Exam() {
     }
@@ -56,7 +56,7 @@ public class Exam implements Serializable {
     public Exam(Integer examid) {
         this.examid = examid;
     }
-    
+
     public Exam(String examtitle) {
         this.examtitle = examtitle;
     }
@@ -91,12 +91,12 @@ public class Exam implements Serializable {
         this.choicesetList = choicesetList;
     }
 
-    public Users getUesrid() {
-        return uesrid;
+    public Users getUserid() {
+        return userid;
     }
 
-    public void setUesrid(Users uesrid) {
-        this.uesrid = uesrid;
+    public void setUserid(Users userid) {
+        this.userid = userid;
     }
 
     @Override
@@ -123,5 +123,5 @@ public class Exam implements Serializable {
     public String toString() {
         return "model.Exam[ examid=" + examid + " ]";
     }
-    
+
 }

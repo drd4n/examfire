@@ -10,7 +10,7 @@ CREATE TABLE users (
 CREATE TABLE exam (
 	examid INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 	examtitle VARCHAR(50) NOT NULL,
-	uesrid INT,
+	userid INT NOT NULL,
 	constraint EXAM_PK PRIMARY KEY (examid));
 
 
@@ -38,7 +38,7 @@ CREATE TABLE choiceset (
 
 
 
-ALTER TABLE Exam ADD CONSTRAINT Exam_fk0 FOREIGN KEY (uesrid) REFERENCES Users(userid);
+ALTER TABLE Exam ADD CONSTRAINT Exam_fk0 FOREIGN KEY (userid) REFERENCES Users(userid);
 
 
 ALTER TABLE Score ADD CONSTRAINT Score_fk0 FOREIGN KEY (userid) REFERENCES Users(userid);

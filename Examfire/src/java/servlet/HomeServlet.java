@@ -6,8 +6,10 @@
 package servlet;
 
 import controller.model.ExamJpaController;
+import controller.model.UsersJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
@@ -16,8 +18,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 import model.Exam;
+import model.Users;
 
 /**
  *
@@ -59,6 +63,11 @@ public class HomeServlet extends HttpServlet {
         ExamJpaController xc = new ExamJpaController(utx, emf);
         List<Exam> exams = xc.findExamEntities();
         request.setAttribute("exams", exams);
+        HttpSession session = request.getSession(false);
+        Users user = (Users) session.getAttribute("user");
+        ExamJpaController ec = new ExamJpaController(utx, emf);
+        ArrayList<Exam> urexs = ec.findExamByUserid(user);
+        request.setAttribute("urexs", urexs);
         getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
     }
 
