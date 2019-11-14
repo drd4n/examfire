@@ -5,34 +5,30 @@
  */
 package servlet;
 
-import controller.model.UsersJpaController;
+import controller.model.ExamJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.annotation.Resource;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
-import model.Users;
+import model.Exam;
 
 /**
  *
  * @author Dan
  */
-public class LoginServlet extends HttpServlet {
-
-    @PersistenceUnit(name = "ExamfirePU")
+public class HomeServlet extends HttpServlet {
+@PersistenceUnit(name = "ExamfirePU")
     EntityManagerFactory emf;
 
     @Resource
     UserTransaction utx;
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,25 +41,7 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        EntityManager em = emf.createEntityManager();
-        Query q = em.createNamedQuery("Users.findByUsername");
-        q.setParameter("username", username);
-        try {
-            Users usr = (Users) q.getResultList().get(0);
-            if (username.equals(usr.getUsername())) {
-                if (password.equals(usr.getPassword())) {
-                    HttpSession ses = request.getSession();
-                    ses.setAttribute("user", usr);
-                    response.sendRedirect("/Examfire/Home");
-                }
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            request.setAttribute("message", "Your username or password Wrong!");
-            getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
-        }
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -78,15 +56,10 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        if (session == null) {
-            getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
-        }
-        if (session.getAttribute("user") == null) {
-            getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
-        }
+        ExamJpaController xc = new ExamJpaController(utx, emf);
+        List<Exam> exams = xc.findExamEntities();
+        request.setAttribute("exams", exams);
         getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
-
     }
 
     /**

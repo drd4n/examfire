@@ -4,6 +4,7 @@
     Author     : Dan
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,9 @@
     </head>
     <body>
         <jsp:include page="/WEB-INF/Header.jsp" />
-        <h1>${user.getUserfullname()}</h1>
+        <h1>Let's Practice!</h1>
+        <c:forEach items="${exams}" var="exs">
+            <p>${exs.getExamtitle()}</p><br>
+        </c:forEach>
     </body>
 </html>

@@ -9,8 +9,8 @@
         <servlet-class>servlet.RegisterServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ExamList</servlet-name>
-        <servlet-class>servlet.ExamListServlet</servlet-class>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>servlet.HomeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -21,8 +21,8 @@
         <url-pattern>/Register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ExamList</servlet-name>
-        <url-pattern>/ExamList</url-pattern>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/Home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
