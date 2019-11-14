@@ -5,19 +5,32 @@
  */
 package servlet;
 
+import controller.model.ExamJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.UserTransaction;
+import model.Exam;
 
 /**
  *
  * @author ZolyKana
  */
-public class ExamListServlet extends HttpServlet {
+@WebServlet(name = "Exam", urlPatterns = {"/Exam"})
+public class ExamServlet extends HttpServlet {
+@PersistenceUnit(name = "ExamfirePU")
+    EntityManagerFactory emf;
 
+@Resource
+    UserTransaction utx;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,10 +48,10 @@ public class ExamListServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ExamListServlet</title>");            
+            out.println("<title>Servlet ExamServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ExamListServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ExamServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,7 +69,15 @@ public class ExamListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int id = Integer.parseInt((String) request.getAttribute("examid"));
+        ExamJpaController xc = new ExamJpaController(utx, emf);
+        Exam exam = xc.findExam(id);
+        request.setAttribute("Exam", exam);
+        
+        
+        
+        
+        //ary AnswerI
     }
 
     /**

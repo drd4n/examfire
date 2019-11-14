@@ -212,7 +212,7 @@ public class ExamJpaController implements Serializable {
             }
         }
     }
-
+    
     public List<Exam> findExamEntities() {
         return findExamEntities(true, -1, -1);
     }
