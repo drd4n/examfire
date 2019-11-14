@@ -16,42 +16,78 @@
     <body>
         <jsp:include page="/WEB-INF/Header.jsp" />
         <h1>Let's Practice!</h1>
-        <table class="table table-striped">
+        <div class="row text-center">
+            
+        <table class="col-6 table table-striped">
+            
             <thead class="thead-dark">
                 <tr>
                     <th>Title</th>
-                    <th></th>
-                    <th></th>
-                    <th>Score</th>
                 </tr>
+                
             </thead>
-            <c:forEach items="${exams}" var="exs">
-                <tr>
+              <c:forEach items="${exams}" var="exs">  
+            <tr>
+                
                     <td>${exs.getExamtitle()}</td>
-                    <td></td>
-                    <td></td>
-                    <td>Score</td>
-                </tr>
-        </c:forEach>
-            </table>
-        <h1>Your exams</h1>
-        <table class="table table-striped">
+                
+            </tr>
+            </c:forEach>
+        </table>
+            
+            <table class="col-6 table table-striped">
+            
             <thead class="thead-dark">
                 <tr>
                     <th>Title</th>
-                    <th></th>
-                    <th></th>
-                    <th>Score</th>
                 </tr>
+                
             </thead>
-            <c:forEach items="${urexs}" var="urexs">
+              <c:forEach items="${exams}" var="exs">  
+            <tr>
+                
+                    <td>${exs.getExamtitle()}</td>
+                
+            </tr>
+            </c:forEach>
+        </table>
+            </div>
+        <h1>Your exams</h1>
+        <div class="row text-center">
+            
+        <table class="col-6 table table-striped">
+            
+            <thead class="thead-dark">
                 <tr>
-                    <td>${urexs.getExamtitle()}</td>
-                    <td></td>
-                    <td></td>
-                    <td>Score</td>
+                    <th>Title</th>
                 </tr>
-        </c:forEach>
-            </table>
+                
+            </thead>
+              <c:forEach items="${urexs}" var="urexs">  
+            <tr>
+                
+                    <td>${urexs.getExamtitle()}</td>
+                
+            </tr>
+            </c:forEach>
+        </table>
+            
+            <table class="col-6 table table-striped">
+            
+            <thead class="thead-dark">
+                <tr>
+                    <th>Title</th>
+                </tr>
+                
+            </thead>
+              <c:forEach items="${urexs}" var="urexs">  
+            <tr>
+                
+                    <td>${urexs.getExamtitle()}</td>
+                
+            </tr>
+            </c:forEach>
+        </table>
+            </div>
     </body>
 </html>
