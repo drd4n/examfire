@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.UserTransaction;
+import model.Choice;
+import model.Choiceset;
 import model.Exam;
 
 /**
@@ -73,11 +75,7 @@ public class ExamServlet extends HttpServlet {
         ExamJpaController xc = new ExamJpaController(utx, emf);
         Exam exam = xc.findExam(id);
         request.setAttribute("Exam", exam);
-        
-        
-        
-        
-        //ary AnswerI
+        getServletContext().getRequestDispatcher("/Exam.jsp").forward(request, response); 
     }
 
     /**
@@ -91,7 +89,20 @@ public class ExamServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int id = Integer.parseInt((String) request.getAttribute("examid"));
+        ExamJpaController xc = new ExamJpaController(utx, emf);
+        Exam exam = xc.findExam(id);
+        int answer = 0;
+        int score = 0;
+        for (Choiceset set : exam.getChoicesetList()) {
+            for (Choice c  : set.getChoiceList()) {
+                answer = Integer.parseInt(request.getParameter("answers"+c.getChoicesetid()+"c"+set.getChoicesetid()));
+                if(c.getChoiceid()==answer){
+                    score++;
+                }
+            }
+            
+        }
     }
 
     /**
