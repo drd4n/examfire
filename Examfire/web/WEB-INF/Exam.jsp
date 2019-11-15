@@ -14,28 +14,32 @@
     </head>
     <body>
         <h1>${Exam.getExamTitle()}</h1>
-        <c:forEach items="Exam.getChoicesetList()" var="set">
-            <div>
-                <table>
-                    <c:forEach items="set.getChoiceList()" var="choice">
-                        <tr>
-                            <td><input type="number" name="answer${choice.getChoiceid()}s${set.getChoicesetid()}"></td>
-                            <td>${choice.getQuestion()}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
-                //Question
-                <table>
-                    <c:forEach items="AnswerI" var="answer">
-                        <tr>
-                            <td>num</td>
-                            <td>${answer.getAnswer()}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
-                //Answer
-            </div>
-        </c:forEach>
+        <form>
+            <c:forEach items="Exam.getChoicesetList()" var="set">
+                <div>
+                    <table>
+                        <c:forEach items="set.getShuffleChoice()" var="choice">
+                            <tr>
+                                <td><input type="number" name="answers${choice.getChoicesetid()}c${set.getChoiceid()}"></td>
+                                <td>${choice.getQuestion()}</td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                    //Question
+                    
+                    <table>
+                        <c:forEach items="set.getChoiceList()" var="answer" varStatus="num">
+                            <tr>
+                                <td>${num}</td>
+                                <td>${answer.getAnswer()}</td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                    //Answer
+                    
+                </div>
+            </c:forEach>
+        </form>
         
     </body>
 </html>

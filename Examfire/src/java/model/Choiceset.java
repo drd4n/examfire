@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -81,6 +82,12 @@ public class Choiceset implements Serializable {
     @XmlTransient
     public List<Choice> getChoiceList() {
         return choiceList;
+    }
+    
+    public List<Choice> getShuffleChoice() {
+        List<Choice> shuffle = choiceList;
+        Collections.shuffle(shuffle);
+        return shuffle;
     }
 
     public void setChoiceList(List<Choice> choiceList) {
