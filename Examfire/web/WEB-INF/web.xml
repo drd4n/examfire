@@ -13,8 +13,8 @@
         <servlet-class>servlet.HomeServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ScoreListServlet</servlet-name>
-        <servlet-class>servlet.ScoreListServlet</servlet-class>
+        <servlet-name>ScoreServlet</servlet-name>
+        <servlet-class>servlet.ScoreServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -29,8 +29,8 @@
         <url-pattern>/Home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ScoreListServlet</servlet-name>
-        <url-pattern>/ScoreList</url-pattern>
+        <servlet-name>ScoreServlet</servlet-name>
+        <url-pattern>/Score</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
