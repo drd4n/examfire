@@ -20,7 +20,7 @@
             
             <thead class="thead-dark">
                 <tr>
-                    <th>Title</th>
+                    <th>${exam.getExamtitle}</th>
                 </tr>
                 
             </thead>
@@ -37,7 +37,7 @@
             
             <thead class="thead-dark">
                 <tr>
-                    <th>Title</th>
+                    <th>${exam.getExamtitle}</th>
                 </tr>
                 
             </thead>
