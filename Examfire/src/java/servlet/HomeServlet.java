@@ -6,6 +6,7 @@
 package servlet;
 
 import controller.model.ExamJpaController;
+import controller.model.ScoreController;
 import controller.model.UsersJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,11 +61,19 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        Users user = (Users) session.getAttribute("user");
         ExamJpaController xc = new ExamJpaController(utx, emf);
         List<Exam> exams = xc.findExamEntities();
         request.setAttribute("exams", exams);
-        HttpSession session = request.getSession(false);
-        Users user = (Users) session.getAttribute("user");
+        
+        ArrayList<Integer> scores = new ArrayList<>();
+        for (int i = 0; i < exams.size(); i++) {
+            ScoreController sc = new ScoreController();
+            scores.add(sc.findByUseridAndExamid(user, exams.get(i)));
+        }
+        request.setAttribute("scores", scores);
+        
         ExamJpaController ec = new ExamJpaController(utx, emf);
         ArrayList<Exam> urexs = ec.findExamByUserid(user);
         request.setAttribute("urexs", urexs);

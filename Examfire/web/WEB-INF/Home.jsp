@@ -43,10 +43,10 @@
                 </tr>
                 
             </thead>
-              <c:forEach items="${exams}" var="exs">  
+            <c:forEach items="${scores}" var="scores" varStatus="i">  
             <tr>
                 
-                    <td>${exs.getExamtitle()}</td>
+                    <td>${scores}</td>
                 
             </tr>
             </c:forEach>
