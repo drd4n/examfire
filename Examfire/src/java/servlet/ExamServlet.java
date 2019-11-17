@@ -6,6 +6,7 @@
 package servlet;
 
 import controller.model.ExamJpaController;
+import controller.model.ScoreController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,10 +18,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 import model.Choice;
 import model.Choiceset;
 import model.Exam;
+import model.Users;
 
 /**
  *
@@ -89,9 +92,10 @@ public class ExamServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt((String) request.getAttribute("examid"));
+        int examid = Integer.parseInt(request.getParameter("examid"));
         ExamJpaController xc = new ExamJpaController(utx, emf);
-        Exam exam = xc.findExam(id);
+        ScoreController sc = new ScoreController();
+        Exam exam = xc.findExam(examid);
         int answer = 0;
         int score = 0;
         for (Choiceset set : exam.getChoicesetList()) {
@@ -103,6 +107,13 @@ public class ExamServlet extends HttpServlet {
             }
             
         }
+        //Send Score to Table
+        HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("users");
+        sc.saveScore(user.getUserid(), score, examid);
+        
+        getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
+        
     }
 
     /**

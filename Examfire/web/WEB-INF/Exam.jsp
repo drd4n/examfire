@@ -20,7 +20,7 @@
                     <table>
                         <c:forEach items="set.getShuffleChoice()" var="choice">
                             <tr>
-                                <td><input type="number" name="answers${choice.getChoicesetid()}c${set.getChoicesetid()}"></td>
+                                <td><input type="number" name="answers${choice.getChoicesetid()}c${set.getChoicesetid()}" min="1" max="4" required></td>
                                 <td>${choice.getQuestion()}</td>
                             </tr>
                         </c:forEach>
