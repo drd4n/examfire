@@ -22,6 +22,7 @@ import model.Users;
  */
 public class ScoreController {
     String Find_By_Userid_Examid = "select * from EXAMFIRE.SCORE where USERID = ? and EXAMID = ?";
+    String Save_Score = "insert into EXAMFIRE.SCORE(USERID, USERSCORE,EXAMID) values(?,?,?)";
     
     public ArrayList<Integer> findByUseridAndExamid(Users user, Exam exam){
        ArrayList<Integer> scores = new ArrayList<>();
@@ -42,5 +43,19 @@ public class ScoreController {
         
     return scores;
 }
-
+    
+    public void saveScore(int userid,int userscore,int examid){
+        try {
+            Connection con = DatabaseConnection.getConnection();
+            PreparedStatement pst= con.prepareStatement(Save_Score);
+            pst.setInt(1, userid);
+            pst.setInt(2, userscore);
+            pst.setInt(3, examid);
+            pst.executeUpdate();
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ScoreController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

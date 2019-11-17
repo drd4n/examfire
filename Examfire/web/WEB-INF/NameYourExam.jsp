@@ -15,7 +15,7 @@
         <h1>Create Your Exam</h1>
         <form action="" method="post">
             <input type="text" name="examtitle">
-            
+            <input type="submit" value="Go!">
         </form>
     </body>
 </html>
