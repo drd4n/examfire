@@ -14,41 +14,6 @@
     </head>
     <body>
         <jsp:include page="/WEB-INF/Header.jsp" />
-        <div class="row text-center">
-            
-        <table class="col-6 table table-striped">
-            
-            <thead class="thead-dark">
-                <tr>
-                    <th>${exam.getExamtitle}</th>
-                </tr>
-                
-            </thead>
-              <c:forEach items="${exams}" var="exs">  
-            <tr>
-                
-                    <td>${score.getExamScore()}</td>
-                
-            </tr>
-            </c:forEach>
-        </table>
-            
-            <table class="col-6 table table-striped">
-            
-            <thead class="thead-dark">
-                <tr>
-                    <th>${exam.getExamtitle}</th>
-                </tr>
-                
-            </thead>
-              <c:forEach items="${exams}" var="exs">  
-            <tr>
-                
-                    <td>${score.getExamScore()}</td>
-                
-            </tr> 
-            </c:forEach>
-        </table>
-            </div>
+        
     </body>
 </html>
