@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Exam;
@@ -24,8 +25,8 @@ public class ScoreController {
     String Find_By_Userid_Examid = "select * from EXAMFIRE.SCORE where USERID = ? and EXAMID = ?";
     String Save_Score = "insert into EXAMFIRE.SCORE(USERID, USERSCORE,EXAMID) values(?,?,?)";
     
-    public ArrayList<Integer> findByUseridAndExamid(Users user, Exam exam){
-       ArrayList<Integer> scores = new ArrayList<>();
+    public int findByUseridAndExamid(Users user, Exam exam){
+       int score = 0;
         try {
             Connection con = DatabaseConnection.getConnection();
             PreparedStatement pst = con.prepareStatement(Find_By_Userid_Examid);
@@ -33,7 +34,7 @@ public class ScoreController {
             pst.setInt(2, exam.getExamid());
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
-                    scores.add(rs.getInt("USERSCORE"));
+                    score = (rs.getInt("USERSCORE"));
                 }
                 pst.close();
                 con.close();
@@ -41,7 +42,7 @@ public class ScoreController {
             Logger.getLogger(ScoreController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    return scores;
+    return score;
 }
     
     public void saveScore(int userid,int userscore,int examid){
