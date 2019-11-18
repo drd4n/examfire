@@ -23,6 +23,9 @@
                 <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
                 ${user.getUserfullname()}
             </a>
+            <form class="form-inline" action="Logout" method="post">
+                <button class="btn btn-danger mr-3" type="sumbit">Logout</button>
+            </form>
         </nav>
     </body>
 </html>

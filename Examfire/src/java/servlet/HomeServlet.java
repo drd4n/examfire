@@ -67,16 +67,16 @@ public class HomeServlet extends HttpServlet {
         List<Exam> exams = xc.findExamEntities();
         request.setAttribute("exams", exams);
         
-        ArrayList<Integer> scores = new ArrayList<>();
-        for (int i = 0; i < exams.size(); i++) {
-            ScoreController sc = new ScoreController();
-            scores.add(sc.findByUseridAndExamid(user, exams.get(i)));
-        }
-        request.setAttribute("scores", scores);
-        
-//        ScoreController sc = new ScoreController();
-//        ArrayList<Integer> scores =sc.findScoreEntitiesByUserid(user);
+//        ArrayList<Integer> scores = new ArrayList<>();
+//        for (int i = 0; i < exams.size(); i++) {
+//            ScoreController sc = new ScoreController();
+//            scores.add(sc.findByUseridAndExamid(user, exams.get(i)));
+//        }
 //        request.setAttribute("scores", scores);
+        
+        ScoreController sc = new ScoreController();
+        ArrayList<Integer> scores =sc.findScoreEntitiesByUserid(user);
+        request.setAttribute("scores", scores);
         
         ExamJpaController ec = new ExamJpaController(utx, emf);
         ArrayList<Exam> urexs = ec.findExamByUserid(user);

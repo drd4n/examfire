@@ -14,6 +14,6 @@
     </head>
     <body>
         <jsp:include page="/WEB-INF/Header.jsp" />
-        
+        ${score}
     </body>
 </html>
