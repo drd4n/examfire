@@ -29,13 +29,33 @@
               <c:forEach items="${exams}" var="exs">  
             <tr>
                 
-                    <td>${exs.getExamtitle()}</td>
+                <td><a href="/Examfire/Exam?examid=1"> ${exs.getExamtitle()}</a></td>
                 
             </tr>
             </c:forEach>
         </table>
+            <table class="col-2 table table-striped">
             
-            <table class="col-6 table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Let's Do</th>
+                </tr>
+                
+            </thead>
+              <c:forEach items="${exams}" var="exs">  
+            <tr>
+                        <td>
+                            <form action="Exam" method="get">
+                                <input hidden="true" name="examid" value="${exs.getExamid()}">
+                                <input type="submit" value="Go!">
+                            </form>
+                        </td>
+            </tr>
+            </c:forEach>
+        </table>
+        </table>
+            
+            <table class="col-4 table table-striped">
             
             <thead class="thead-dark">
                 <tr>
@@ -51,6 +71,7 @@
             </tr>
             </c:forEach>
         </table>
+            
             </div>
         <h1>Your exams</h1>
         <div class="row text-center">

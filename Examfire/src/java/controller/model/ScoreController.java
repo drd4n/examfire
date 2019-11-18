@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+import javax.transaction.UserTransaction;
 import model.Exam;
 import model.Users;
 
@@ -22,6 +26,11 @@ import model.Users;
  * @author Dan
  */
 public class ScoreController {
+    @PersistenceUnit(name = "ExamfirePU")
+    EntityManagerFactory emf;
+
+    @Resource
+    UserTransaction utx;
     String Find_By_Userid_Examid = "select * from EXAMFIRE.SCORE where USERID = ? and EXAMID = ?";
     String Save_Score = "insert into EXAMFIRE.SCORE(USERID, USERSCORE,EXAMID) values(?,?,?)";
     
@@ -44,6 +53,31 @@ public class ScoreController {
         
     return score;
 }
+    
+//    public ArrayList<Integer> findScoreEntitiesByUserid(Users user){
+//        ArrayList<Integer> scores = new ArrayList<>();
+//            ExamJpaController xc = new ExamJpaController(utx, emf);
+//            int countExams = xc.getExamCount();
+//            int score =0 ;
+//        try {
+//            Connection con = DatabaseConnection.getConnection();
+//            PreparedStatement pst = con.prepareStatement(Find_By_Userid_Examid);
+//            pst.setInt(1, user.getUserid());
+//            for (int i = 1; i < countExams; i++) {
+//                pst.setInt(2, i);
+//                ResultSet rs = pst.executeQuery();
+//                while(rs.next()){
+//                    score = (rs.getInt("USERSCORE"));
+//                    scores.add(score);
+//                }
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ScoreController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return scores;
+//}
+
     
     public void saveScore(int userid,int userscore,int examid){
         try {
