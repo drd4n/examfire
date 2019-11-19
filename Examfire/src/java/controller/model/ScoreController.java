@@ -55,28 +55,28 @@ public class ScoreController {
     return score;
 }
     
-    public ArrayList<Integer> findScoreEntitiesByUserid(Users user){
-        ArrayList<Integer> scores = new ArrayList<>();
-            int countExams = this.countAllExamByUserid(user);
-            int score =0 ;
-        try {
-            Connection con = DatabaseConnection.getConnection();
-            PreparedStatement pst = con.prepareStatement(Find_By_Userid_Examid);
-            pst.setInt(1, user.getUserid());
-            for (int i = 0; i <= countExams; i++) {
-                pst.setInt(2, i);
-                ResultSet rs = pst.executeQuery();
-                while(rs.next()){
-                    score = (rs.getInt("USERSCORE"));
-                    scores.add(score);
-                }
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ScoreController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return scores;
-}
+//    public ArrayList<Integer> findScoreEntitiesByUserid(Users user){
+//        ArrayList<Integer> scores = new ArrayList<>();
+//            int countExams = this.countAllExamByUserid(user);
+//            int score =0 ;
+//        try {
+//            Connection con = DatabaseConnection.getConnection();
+//            PreparedStatement pst = con.prepareStatement(Find_By_Userid_Examid);
+//            pst.setInt(1, user.getUserid());
+//            for (int i = 0; i <= countExams; i++) {
+//                pst.setInt(2, i);
+//                ResultSet rs = pst.executeQuery();
+//                while(rs.next()){
+//                    score = (rs.getInt("USERSCORE"));
+//                    scores.add(score);
+//                }
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ScoreController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return scores;
+//}
 
     
     public void saveScore(int userid,int userscore,int examid){
@@ -94,21 +94,21 @@ public class ScoreController {
         }
     }
     
-    public int countAllExamByUserid(Users user){
-        int count =0;
-        Connection con = DatabaseConnection.getConnection();
-        try {
-            PreparedStatement pst = con.prepareStatement(Find_Entities_By_Userid);
-            pst.setInt(1, user.getUserid());
-            ResultSet rs = pst.executeQuery();
-            if(rs.next()){
-                count = rs.getInt(1);
-            }
-            pst.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(ScoreController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return count;
-    }
+//    public int countAllExamByUserid(Users user){
+//        int count =0;
+//        Connection con = DatabaseConnection.getConnection();
+//        try {
+//            PreparedStatement pst = con.prepareStatement(Find_Entities_By_Userid);
+//            pst.setInt(1, user.getUserid());
+//            ResultSet rs = pst.executeQuery();
+//            if(rs.next()){
+//                count = rs.getInt(1);
+//            }
+//            pst.close();
+//            con.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ScoreController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return count;
+//    }
 }
