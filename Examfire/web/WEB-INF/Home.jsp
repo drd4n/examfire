@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="images/EF_Favicon.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Examfire Home</title>
-        
+
 
     </head>
     <body>
@@ -88,6 +88,13 @@
                         <td>${urexs.getExamtitle()}</td>
 
                     </tr>
+                    
+                    <td>
+                        <form class="form-inline" action="viewscore" method="post">
+                            <button class="btn btn-primary" type="sumbit">view score</button>
+                        </form> 
+                    </td>
+
                 </c:forEach>
             </table>
         </div>
