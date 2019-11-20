@@ -71,10 +71,11 @@ public class ExamServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    int id;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt((String) request.getParameter("examid"));
+        id = Integer.parseInt((String) request.getParameter("examid"));
         ExamJpaController xc = new ExamJpaController(utx, emf);
         Exam exam = xc.findExam(id);
         request.setAttribute("Exam", exam);
@@ -92,10 +93,8 @@ public class ExamServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int examid = Integer.parseInt(request.getParameter("examid"));
         ExamJpaController xc = new ExamJpaController(utx, emf);
-        ScoreController sc = new ScoreController();
-        Exam exam = xc.findExam(examid);
+        Exam exam = xc.findExam(id);
         int answer = 0;
         int score = 0;
         for (Choiceset set : exam.getChoicesetList()) {
@@ -109,7 +108,8 @@ public class ExamServlet extends HttpServlet {
         //Send Score to Table
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("users");
-        sc.saveScore(user.getUserid(), score, examid);
+        ScoreController sc = new ScoreController();
+        sc.saveScore(user.getUserid(), score, id);
         
         getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
         

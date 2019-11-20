@@ -16,7 +16,7 @@
         <jsp:include page="/WEB-INF/Header.jsp" />
         <h1>${Exam.getExamtitle()}</h1>
         
-        <form>
+        <form action="ExamServlet" method="post">
             <c:forEach items="${Exam.getChoicesetList()}" var="set">
                 <div class="row text-center">
                     <table class="col-6 table table-striped">
