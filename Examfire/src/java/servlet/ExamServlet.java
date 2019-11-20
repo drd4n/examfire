@@ -107,7 +107,7 @@ public class ExamServlet extends HttpServlet {
         }
         //Send Score to Table
         HttpSession session = request.getSession();
-        Users user = (Users) session.getAttribute("users");
+        Users user = (Users) session.getAttribute("user");
         ScoreController sc = new ScoreController();
         sc.saveScore(user.getUserid(), score, id);
         
