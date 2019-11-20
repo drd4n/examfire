@@ -31,7 +31,7 @@
                 <c:forEach items="${exams}" var="exs">  
                     <tr>
 
-                        <td><a href="/Examfire/Exam?examid=${exs.getExamid()}"> ${exs.getExamtitle()}</a></td>
+                        <td><a href="/Examfire/ExamServlet?examid=${exs.getExamid()}"> ${exs.getExamtitle()}</a></td>
 
                     </tr>
                 </c:forEach>

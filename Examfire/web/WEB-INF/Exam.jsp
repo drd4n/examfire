@@ -13,32 +13,35 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>${Exam.getExamTitle()}</h1>
+        <jsp:include page="/WEB-INF/Header.jsp" />
+        <h1>${Exam.getExamtitle()}</h1>
+        
         <form>
-            <c:forEach items="Exam.getChoicesetList()" var="set">
-                <div>
-                    <table>
-                        <c:forEach items="set.getShuffleChoice()" var="choice">
+            <c:forEach items="${Exam.getChoicesetList()}" var="set">
+                <div class="row text-center">
+                    <table class="col-6 table table-striped">
+                        <c:forEach items="${set.getShuffleChoice()}" var="choice">
                             <tr>
-                                <td><input type="number" name="answers${choice.getChoicesetid()}c${set.getChoicesetid()}" min="1" max="4" required></td>
-                                <td>${choice.getQuestion()}</td>
+                                <td><input type="number" name="answers${choice.getChoicesetid()}c${set.getChoicesetid()}" min="1" max="4" required>. ${choice.getQuestion()}</td>
                             </tr>
                         </c:forEach>
                     </table>
-                    //Question
                     
-                    <table>
-                        <c:forEach items="set.getChoiceList()" var="answer" varStatus="num">
+                    
+                    
+                    <table class="col-6 table table-striped">
+                        <c:forEach items="${set.getChoiceList()}" var="answer" varStatus="num">
                             <tr>
-                                <td>${num}</td>
-                                <td>${answer.getAnswer()}</td>
+                                <td>${num.count}. ${answer.getAnswer()}</td>
+                                
                             </tr>
                         </c:forEach>
                     </table>
-                    //Answer
+                    
                     
                 </div>
             </c:forEach>
+            <input type="submit" value="Send Answer">
         </form>
         
     </body>

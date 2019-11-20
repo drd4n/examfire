@@ -74,11 +74,11 @@ public class ExamServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt((String) request.getAttribute("examid"));
+        int id = Integer.parseInt((String) request.getParameter("examid"));
         ExamJpaController xc = new ExamJpaController(utx, emf);
         Exam exam = xc.findExam(id);
         request.setAttribute("Exam", exam);
-        getServletContext().getRequestDispatcher("/Exam.jsp").forward(request, response); 
+        getServletContext().getRequestDispatcher("/WEB-INF/Exam.jsp").forward(request, response); 
     }
 
     /**
@@ -105,7 +105,6 @@ public class ExamServlet extends HttpServlet {
                     score++;
                 }
             }
-            
         }
         //Send Score to Table
         HttpSession session = request.getSession();
