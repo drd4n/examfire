@@ -24,6 +24,10 @@
         <servlet-name>ExamServlet</servlet-name>
         <servlet-class>servlet.ExamServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ResultServlet</servlet-name>
+        <servlet-class>servlet.ResultServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ExamServlet</servlet-name>
         <url-pattern>/ExamServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResultServlet</servlet-name>
+        <url-pattern>/Result</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

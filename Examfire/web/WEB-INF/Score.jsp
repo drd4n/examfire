@@ -15,5 +15,6 @@
     <body>
         <jsp:include page="/WEB-INF/Header.jsp" />
         ${score}
+        <a href="/Examfire/Result?examid=${examid}">See Result</a>
     </body>
 </html>

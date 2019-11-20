@@ -41,6 +41,7 @@
                     
                 </div>
             </c:forEach>
+            <input value="${Exam.getExamid()}" hidden="true">
             <input type="submit" value="Send Answer">
         </form>
         

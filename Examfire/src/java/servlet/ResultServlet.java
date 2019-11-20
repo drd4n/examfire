@@ -5,37 +5,19 @@
  */
 package servlet;
 
-import controller.model.ExamJpaController;
-import controller.model.ScoreController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.annotation.Resource;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.transaction.UserTransaction;
-import model.Choice;
-import model.Choiceset;
-import model.Exam;
-import model.Users;
 
 /**
  *
- * @author ZolyKana
+ * @author Dan
  */
-@WebServlet(name = "Exam", urlPatterns = {"/Exam"})
-public class ExamServlet extends HttpServlet {
-@PersistenceUnit(name = "ExamfirePU")
-    EntityManagerFactory emf;
+public class ResultServlet extends HttpServlet {
 
-@Resource
-    UserTransaction utx;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -48,8 +30,9 @@ public class ExamServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        
+        int examid = Integer.parseInt(request.getParameter("examid"))  ;
+        request.setAttribute("examid", examid);
+        getServletContext().getRequestDispatcher("/WEB-INF/Result.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,15 +44,10 @@ public class ExamServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    int id;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        id = Integer.parseInt((String) request.getParameter("examid"));
-        ExamJpaController xc = new ExamJpaController(utx, emf);
-        Exam exam = xc.findExam(id);
-        request.setAttribute("Exam", exam);
-        getServletContext().getRequestDispatcher("/WEB-INF/Exam.jsp").forward(request, response); 
+        processRequest(request, response);
     }
 
     /**
@@ -83,27 +61,7 @@ public class ExamServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ExamJpaController xc = new ExamJpaController(utx, emf);
-        Exam exam = xc.findExam(id);
-        int answer = 0;
-        int score = 0;
-        for (Choiceset set : exam.getChoicesetList()) {
-            for (Choice c  : set.getChoiceList()) {
-                answer = Integer.parseInt(request.getParameter("answers"+c.getChoicesetid()+"c"+set.getChoicesetid()));
-                if(c.getChoiceid()==answer){
-                    score++;
-                }
-            }
-        }
-        //Send Score to Table
-        HttpSession session = request.getSession(false);
-        Users user = (Users) session.getAttribute("user");
-        ScoreController sc = new ScoreController();
-        sc.saveScore(user.getUserid(), score, id);
-        request.setAttribute("examid", id);
-        request.setAttribute("score", score);
-        getServletContext().getRequestDispatcher("/WEB-INF/Score.jsp").forward(request, response);
-        
+        processRequest(request, response);
     }
 
     /**
