@@ -90,9 +90,7 @@
                     </tr>
                     
                     <td>
-                        <form class="form-inline" action="viewscore" method="post">
-                            <button class="btn btn-primary" type="sumbit">view score</button>
-                        </form> 
+                        <a href="/Examfire/Score" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">View Score</a>
                     </td>
 
                 </c:forEach>
