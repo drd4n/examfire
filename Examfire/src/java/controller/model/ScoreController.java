@@ -31,8 +31,8 @@ public class ScoreController {
 
     @Resource
     UserTransaction utx;
-    String Find_Entities_By_Userid = "select COUNT(*) from EXAMFIRE.SCORE where USERID = ?";
-    String Find_By_Userid_Examid = "select * from EXAMFIRE.SCORE where USERID = ? and EXAMID = ?";
+    String Find_Entities_By_Userid = "select COUNT(*) from EXAMFIRE.SCORE s JOIN EXAMFIRE.USERS u ON s.USERID=u.USERID where s.USERID = ?";
+    String Find_By_Userid_Examid = "select * from EXAMFIRE.SCORE s JOIN EXAMFIRE.EXAM e ON s.USERID=e.USERID where s.USERID = ? and s.EXAMID = ?";
     String Save_Score = "insert into EXAMFIRE.SCORE(USERID, USERSCORE,EXAMID) values(?,?,?)";
     
     public int findByUseridAndExamid(Users user, Exam exam){

@@ -7,8 +7,6 @@ package servlet;
 
 import controller.model.ScoreController;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -18,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
+import static model.Exam_.examid;
 import static model.Users_.userid;
 
 /**
@@ -45,13 +44,13 @@ public class ScoreServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession ses = request.getSession(false);
-//        int examid = Integer.parseInt(request.getParameter("examid"))  ;
-        int score = Integer.parseInt(request.getParameter("score"))  ;
+//        int examid = Integer.parseInt(request.getParameter("examid"))
 //        request.setAttribute("examid", examid);
 //        getServletContext().getRequestDispatcher("/WEB-INF/Result.jsp").forward(request, response);
         
         ScoreController sc = new ScoreController();
-        
+        //int sco = sc.findByUseridAndExamid(userid, examid);
+        int score = Integer.parseInt(request.getParameter("score"));
         request.setAttribute("score", score);
         
     }
