@@ -4,6 +4,7 @@
     Author     : Dan
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,38 @@
         <title>Result</title>
     </head>
     <body>
+        <jsp:include page="/WEB-INF/Header.jsp" />
         <h1>See the answer!</h1>
-        <p>${examid}</p>
+        <h2> ${examresult.getExamtitle()} </h2>
+        <form action="Home" method="get">
+            <c:forEach items="${examresult.getChoicesetList()}" var="set">
+                <div class="row text-center">
+
+                    <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Question Left side</th>
+                                    <th>Right Answer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        <c:forEach items="${set.getChoiceList()}" var="answer" varStatus="num">
+                            <tr>
+                                <td>${answer.getQuestion()}</td>
+                                <td>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">${num.count}</span>
+                                        <span class="ml-2"> ${answer.getAnswer()}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                            </tbody>
+                    </table>
+  
+                </div>
+            </c:forEach>
+            <input type="submit" value="Back">
+        </form>
     </body>
 </html>
