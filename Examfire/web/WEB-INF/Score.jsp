@@ -17,8 +17,40 @@
     </head>
     <body>
         <jsp:include page="/WEB-INF/Header.jsp" />
-        <h1>${Exam.getExamtitle()}</h1>
-        <h2>You got ${score} point from this Exam!</h2>
-        <a href="/Examfire/Result?examid=${examid}">See Result</a>
+
+        <div class="row text-center">
+            
+            <form action='score' method="post">
+
+
+                <table class="col-6 table table-striped">
+
+                    <thead class="thead-dark">
+
+                        <tr>
+                            <th>Title</th>
+                            <th>Exam ID</th>
+                            <th>Score</th>
+                            <th>More Info</th>
+                        </tr>
+
+                        <tr>
+                            <td>${Exam.getExamtitle()}</td>
+                            <td>${Exam.getExamid()}</td>
+                            <td>${score}</td>
+
+                            <td><a href="/Examfire/Result?examid=${examid}">See Result</a></td>
+                        </tr>
+
+                    </thead>
+
+                </table>
+
+
+            </form>
+                        
+        </div>
+                        
+                        
     </body>
 </html>
