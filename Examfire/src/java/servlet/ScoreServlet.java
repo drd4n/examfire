@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
-import static model.Exam_.examid;
-import static model.Users_.userid;
+import model.Exam;
+import model.Users;
 
 /**
  *
@@ -39,20 +39,27 @@ public class ScoreServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    
+//    Users userid;
+//    Exam examid;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession ses = request.getSession(false);
-//        int examid = Integer.parseInt(request.getParameter("examid"))
-//        request.setAttribute("examid", examid);
-//        getServletContext().getRequestDispatcher("/WEB-INF/Result.jsp").forward(request, response);
         
+//        HttpSession session = request.getSession(false);
+//        Users userid = (Users) session.getAttribute("userid");
+
+        Users userid = (Users) request.getAttribute("userid");
+        Exam examid = (Exam) request.getAttribute("examid");
+        
+//        request.getParameter("userid");
+//        request.getParameter("examid");
+
         ScoreController sc = new ScoreController();
-        //int sco = sc.findByUseridAndExamid(userid, examid);
-        int score = Integer.parseInt(request.getParameter("score"));
-        request.setAttribute("score", score);
-        
+        int exam = sc.findByUseridAndExamid(userid, examid);
+        request.setAttribute("userid", userid);
+        request.setAttribute("examid", examid);
+        request.setAttribute("Score", exam);
+        getServletContext().getRequestDispatcher("/WEB-INF/Score.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
