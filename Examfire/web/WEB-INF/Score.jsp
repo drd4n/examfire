@@ -12,8 +12,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="shortcut icon" href="images/EF_Favicon.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Your Score</title>
+        <title>${Exam.getExamtitle()}'s Score</title>
     </head>
     <body>
         <jsp:include page="/WEB-INF/Header.jsp" />
@@ -39,7 +40,7 @@
                             <td>${Exam.getExamid()}</td>
                             <td>${score}</td>
 
-                            <td><a href="/Examfire/Result?examid=${examid}">See Result</a></td>
+                            <td><a href="/Examfire/Result?examid=${examid}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">See Result</a></td>
                         </tr>
 
                     </thead>
