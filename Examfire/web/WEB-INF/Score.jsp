@@ -16,7 +16,9 @@
         <title>Your Score</title>
     </head>
     <body>
-        ${score}
+        <jsp:include page="/WEB-INF/Header.jsp" />
+        <h1>${Exam.getExamtitle()}</h1>
+        <h2>You got ${score} point from this Exam!</h2>
         <a href="/Examfire/Result?examid=${examid}">See Result</a>
     </body>
 </html>

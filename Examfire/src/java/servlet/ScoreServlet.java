@@ -56,9 +56,9 @@ public class ScoreServlet extends HttpServlet {
 
         ScoreController sc = new ScoreController();
         int exam = sc.findByUseridAndExamid(userid, examid);
-        request.setAttribute("userid", userid);
-        request.setAttribute("examid", examid);
-        request.setAttribute("Score", exam);
+//        request.setAttribute("userid", userid);
+//        request.setAttribute("examid", examid);
+        request.setAttribute("score", exam);
         getServletContext().getRequestDispatcher("/WEB-INF/Score.jsp").forward(request, response);
     }
 
