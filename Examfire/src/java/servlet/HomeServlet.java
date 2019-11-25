@@ -78,9 +78,6 @@ public class HomeServlet extends HttpServlet {
 //        ArrayList<Integer> scores =sc.findScoreEntitiesByUserid(user);
 //        request.setAttribute("scores", scores);
         
-        ExamJpaController ec = new ExamJpaController(utx, emf);
-        ArrayList<Exam> urexs = ec.findExamByUserid(user);
-        request.setAttribute("urexs", urexs);
         getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
     }
 
