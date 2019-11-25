@@ -13,7 +13,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-       
+
         <link rel="shortcut icon" href="images/EF_Favicon.png">
         <link href="https://fonts.googleapis.com/css?family=Tinos&display=swap" rel="stylesheet">
         <style>
@@ -25,19 +25,17 @@
     </head>
     <body>
         <link rel="shortcut icon" href="images/EF_Favicon.png">
-        <h1>Welcome to Examfire!</h1>
-        <h2>${message}</h2>
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-                <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
-                ${user.getUserfullname()}
+        <nav class="navbar navbar-dark bg-dark row" style="height: 90px;">
+
+            <a class="navbar-brand col-2" href="/Examfire/Home">
+                <img src="images/EF_Logo.png" width="40" alt="Examfire_logo">
+                <span style="font-size: 30px;">${user.getUserfullname()}</span> 
             </a>
-            
-             <form class="form-inline" action="Logout" method="post">
-                 <button class="btn btn-primary" type="sumbit">Logout</button>
-            </form>   
-            
-            
+            <h2 class="text-light col-3">EXAMFIRE!</h2>
+            <form class="form-inline mr-3" action="Logout" method="post">
+                <button class="btn btn-secondary text-light" type="sumbit">Logout</button>
+            </form>
         </nav>
+        <span>${message}</span>
     </body>
 </html>

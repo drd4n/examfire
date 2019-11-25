@@ -15,9 +15,9 @@
 
 
     </head>
-    <body>
+    <body class="bg-light">
         <jsp:include page="/WEB-INF/Header.jsp" />
-        <h1>Let's Practice!</h1>
+        
         <div class="row text-center">
 
             <table class="col-6 table table-striped">
@@ -34,7 +34,7 @@
 
                         <td>
                             <div style="height: 40px; overflow:auto;">
-                                <a href="/Examfire/Score?examid=${exs.getExamid()}"> ${exs.getExamtitle()}</a>
+                                <a class="btn btn-dark text-light" href="/Examfire/Score?examid=${exs.getExamid()}"> ${exs.getExamtitle()}</a>
                             </div>
                         </td>
                         
