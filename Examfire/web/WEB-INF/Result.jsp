@@ -14,9 +14,9 @@
     </head>
     <body>
         <jsp:include page="/WEB-INF/Header.jsp" />
-        <h1>Let's see the answer!</h1>
-        <h2>All answer of ${examresult.getExamtitle()} </h2>
-        
+        <div style="width: 100%;" class="bg-dark text-light">
+            <span style="font-size: 30px;">All answer of ${examresult.getExamtitle()}</span>
+        </div>
             <div class="row text-center">
                 <c:forEach items="${examresult.getChoicesetList()}" var="set">
 
