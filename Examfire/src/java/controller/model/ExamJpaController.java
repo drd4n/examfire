@@ -258,23 +258,6 @@ public class ExamJpaController implements Serializable {
             em.close();
         }
     }
-    public ArrayList<Exam> findExamByUserid(Users u){
-           ArrayList<Exam> urexs = new ArrayList<>();
-        try {
-                Connection conn = DatabaseConnection.getConnection();
-                PreparedStatement pst = conn.prepareStatement(FIND_BY_USERID);
-                pst.setInt(1, u.getUserid());
-                ResultSet rs = pst.executeQuery();
-                while(rs.next()){
-                    urexs.add(CastResultSetToExam(rs));
-                }
-                pst.close();
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ExamJpaController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            return urexs;
-    }
     
     public Exam CastResultSetToExam(ResultSet rs){
         try {
