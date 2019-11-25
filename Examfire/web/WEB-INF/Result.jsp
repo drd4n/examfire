@@ -14,36 +14,37 @@
     </head>
     <body>
         <jsp:include page="/WEB-INF/Header.jsp" />
-        <h1>See the answer!</h1>
-        <h2> ${examresult.getExamtitle()} </h2>
-        <form action="Home" method="get">
-            <c:forEach items="${examresult.getChoicesetList()}" var="set">
-                <div class="row text-center">
+        <h1>Let's see the answer!</h1>
+        <h2>All answer of ${examresult.getExamtitle()} </h2>
+        
+            <div class="row text-center">
+                <c:forEach items="${examresult.getChoicesetList()}" var="set">
 
                     <table class="table table-striped">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>Question Left side</th>
-                                    <th>Right Answer</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                        <c:forEach items="${set.getChoiceList()}" var="answer" varStatus="num">
+                        <thead class="thead-dark">
                             <tr>
-                                <td>${answer.getQuestion()}</td>
-                                <td>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">${num.count}</span>
-                                        <span class="ml-2"> ${answer.getAnswer()}</span>
-                                    </div>
-                                </td>
+                                <th>Question Left side</th>
+                                <th>Right Answer</th>
                             </tr>
-                        </c:forEach>
-                            </tbody>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${set.getChoiceList()}" var="answer" varStatus="num">
+                                <tr>
+                                    <td>${answer.getQuestion()}</td>
+                                    <td>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">${num.count}</span>
+                                            <span class="ml-2"> ${answer.getAnswer()}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
                     </table>
-  
-                </div>
-            </c:forEach>
+
+                </c:forEach>
+            </div>
+        <form action="Home" method="get">
             <input type="submit" value="Back to home">
         </form>
     </body>

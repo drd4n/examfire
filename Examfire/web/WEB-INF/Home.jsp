@@ -25,14 +25,19 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>Title</th>
+                       
                     </tr>
 
                 </thead>
                 <c:forEach items="${exams}" var="exs">  
                     <tr>
 
-                        <td><a href="/Examfire/ExamServlet?examid=${exs.getExamid()}"> ${exs.getExamtitle()}</a></td>
-
+                        <td>
+                            <div style="height: 40px; overflow:auto;">
+                                <a href="/Examfire/Score?examid=${exs.getExamid()}"> ${exs.getExamtitle()}</a>
+                            </div>
+                        </td>
+                        
                     </tr>
                 </c:forEach>
             </table>
@@ -40,61 +45,24 @@
 
                 <thead class="thead-dark">
                     <tr>
-                        <th>Title</th>
+                        <th>Score</th>
                     </tr>
 
                 </thead>
                 <c:forEach items="${scores}" var="scores" varStatus="i">  
                     <tr>
 
-                        <td>${scores}</td>
+                        <td>
+                            <div style="height: 40px; overflow:auto;">
+                                ${scores}
+                            </div>
+                        </td>
 
                     </tr>
                 </c:forEach>
             </table>
 
         </div>
-        <h1>Your exams</h1>
-        <div class="row text-center">
-
-            <table class="col-6 table table-striped">
-
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Title</th>
-                    </tr>
-
-                </thead>
-                <c:forEach items="${urexs}" var="urexs">  
-                    <tr>
-
-                        <td>${urexs.getExamtitle()}</td>
-
-                    </tr>
-                </c:forEach>
-            </table>
-
-            <table class="col-6 table table-striped">
-
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Title</th>
-                    </tr>
-
-                </thead>
-                <c:forEach items="${urexs}" var="urexs">  
-                    <tr>
-
-                        <td>${urexs.getExamtitle()}</td>
-
-                    </tr>
-                    
-                    <td>
-                        <a href="/Examfire/Score" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">View Score</a>
-                    </td>
-
-                </c:forEach>
-            </table>
-        </div>
+        
     </body>
 </html>

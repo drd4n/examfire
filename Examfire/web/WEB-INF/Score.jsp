@@ -20,38 +20,29 @@
         <jsp:include page="/WEB-INF/Header.jsp" />
 
         <div class="row text-center">
-            
-            <form action='score' method="post">
+
+            <table class="table table-striped">
+
+                <thead class="thead-dark">
+
+                    <tr>
+                        <th>Title</th>
+                        <th>Score</th>
+                        <th>More Info</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>${exam.getExamtitle()}</td>
+                    <td>${score}</td>
+                    <td><a href="/Examfire/Result?examid=${examid}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">See Result</a></td>
+                </tr>
 
 
-                <table class="col-6 table table-striped">
 
-                    <thead class="thead-dark">
+            </table>
 
-                        <tr>
-                            <th>Title</th>
-                            <th>Exam ID</th>
-                            <th>Score</th>
-                            <th>More Info</th>
-                        </tr>
-
-                        <tr>
-                            <td>${Exam.getExamtitle()}</td>
-                            <td>${Exam.getExamid()}</td>
-                            <td>${score}</td>
-
-                            <td><a href="/Examfire/Result?examid=${examid}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">See Result</a></td>
-                        </tr>
-
-                    </thead>
-
-                </table>
-
-
-            </form>
-                        
         </div>
-                        
-                        
+
+
     </body>
 </html>
