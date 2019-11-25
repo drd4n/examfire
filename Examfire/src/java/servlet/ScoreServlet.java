@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import controller.model.ExamJpaController;
 import controller.model.ScoreController;
 import java.io.IOException;
 import javax.annotation.Resource;
@@ -45,20 +46,21 @@ public class ScoreServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-//        HttpSession session = request.getSession(false);
-//        Users userid = (Users) session.getAttribute("userid");
-
-        Users userid = (Users) request.getAttribute("userid");
-        Exam examid = (Exam) request.getAttribute("examid");
-        
-//        request.getParameter("userid");
-//        request.getParameter("examid");
-
+       HttpSession session = request.getSession(false);
+        Users user = (Users) session.getAttribute("user");
+        int examid = Integer.parseInt(request.getParameter("examid")) ;
         ScoreController sc = new ScoreController();
-        int exam = sc.findByUseridAndExamid(userid, examid);
-//        request.setAttribute("userid", userid);
-//        request.setAttribute("examid", examid);
-        request.setAttribute("score", exam);
+        ExamJpaController ex = new ExamJpaController(utx, emf);
+        Exam exam =ex.findExam(examid);
+        if(sc.findByUseridAndExamid(user, exam) == 0){
+            request.setAttribute("examid", exam.getExamid());
+            getServletContext().getRequestDispatcher("/WEB-INF/Exam.jsp").forward(request, response);
+        }
+        int score = sc.findByUseridAndExamid(user, exam);
+        
+//        request.setAttribute("user", user);
+        request.setAttribute("exam", exam);
+        request.setAttribute("score", score);
         getServletContext().getRequestDispatcher("/WEB-INF/Score.jsp").forward(request, response);
     }
 
