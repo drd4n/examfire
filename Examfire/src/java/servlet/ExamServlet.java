@@ -87,14 +87,24 @@ public class ExamServlet extends HttpServlet {
         Exam exam = xc.findExam(id);
         int answer = 0;
         int score = 0;
+        int choiceCount;
+        int choiceid = exam.getChoicesetList().get(0).getChoiceList().get(0).getChoiceid();
+        String sChoiceid;
         for (Choiceset set : exam.getChoicesetList()) {
+            choiceCount =1;
             for (Choice c  : set.getChoiceList()) {
-                answer = Integer.parseInt(request.getParameter("answers"+c.getChoicesetid()+"c"+set.getChoicesetid()));
-                if(c.getChoiceid()==answer){
+                sChoiceid = Integer.toString(choiceid);
+                System.out.println(sChoiceid);
+                answer = Integer.parseInt(request.getParameter(sChoiceid));
+                System.out.println(answer);
+                if(choiceCount==answer){
                     score++;
                 }
+                choiceid++;
+                choiceCount++;
             }
         }
+        System.out.println(score);
         //Send Score to Table
         HttpSession session = request.getSession(false);
         Users user = (Users) session.getAttribute("user");
@@ -115,5 +125,9 @@ public class ExamServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private String String(Integer choicesetid) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
