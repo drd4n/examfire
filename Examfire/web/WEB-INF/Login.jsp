@@ -14,7 +14,13 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="images/EF_Favicon.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
+        <title>'s Login</title>
+        <link href="https://fonts.googleapis.com/css?family=Tinos&display=swap" rel="stylesheet">
+        <style>
+            body{
+                font-family: 'Tinos', serif;
+            }
+        </style>
     </head>
     <body class="bg-secondary">
         <div class="text-center bg-dark justify-content-center" style="box-shadow: 2px 2px 10px red; border-radius: 50px; margin: 80px 100px 0px 100px;" >

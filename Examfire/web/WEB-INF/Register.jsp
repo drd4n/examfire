@@ -15,6 +15,12 @@
         <link rel="shortcut icon" href="images/EF_Favicon.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Examfire Register</title>
+        <link href="https://fonts.googleapis.com/css?family=Tinos&display=swap" rel="stylesheet">
+        <style>
+            body{
+                font-family: 'Tinos', serif;
+            }
+        </style>
     </head>
     <body class="bg-secondary">
         <h2>${message}</h2>

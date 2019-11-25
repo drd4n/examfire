@@ -34,7 +34,7 @@
                 <tr>
                     <td>${exam.getExamtitle()}</td>
                     <td>${score}</td>
-                    <td><a href="/Examfire/Result?examid=${exam.getExamid()}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">See Result</a></td>
+                    <td><a href="/Examfire/Result?examid=${exam.getExamid()}" class="btn btn-primary active" role="button" aria-pressed="true">See Result</a></td>
                 </tr>
 
 

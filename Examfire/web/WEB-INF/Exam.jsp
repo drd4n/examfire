@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>'s Exam</title>
     </head>
     <body>
         <jsp:include page="/WEB-INF/Header.jsp" />
