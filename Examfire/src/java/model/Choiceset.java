@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.persistence.Basic;
@@ -85,11 +86,14 @@ public class Choiceset implements Serializable {
     }
     
     public List<Choice> getShuffleChoice() {
-        List<Choice> shuffle = choiceList;
+        ArrayList<Choice> shuffle = new ArrayList<>();
+        for (Choice choiceList1 : this.choiceList) {
+            shuffle.add(choiceList1);
+        }
         Collections.shuffle(shuffle);
         return shuffle;
     }
-
+    
     public void setChoiceList(List<Choice> choiceList) {
         this.choiceList = choiceList;
     }

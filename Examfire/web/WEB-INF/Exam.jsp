@@ -20,7 +20,7 @@
             <c:forEach items="${Exam.getChoicesetList()}" var="set">
                 <div class="row text-center">
                     <table class="col-6 table table-striped">
-                        <c:forEach items="${set.getChoiceList()}" var="choice">
+                        <c:forEach items="${set.getShuffleChoice()}" var="choice">
                             <tr>
                                 <td><input type="number" name="${choice.getChoiceid()}" min="1" max="4" required>. ${choice.getQuestion()}</td>
                             </tr>
@@ -30,7 +30,7 @@
                     
                     
                     <table class="col-6 table table-striped">
-                        <c:forEach items="${set.getShuffleChoice()}" var="answer" varStatus="num">
+                        <c:forEach items="${set.getChoiceList()}" var="answer" varStatus="num">
                             <tr>
                                 <td>${num.count}. ${answer.getAnswer()}</td>
                                 
