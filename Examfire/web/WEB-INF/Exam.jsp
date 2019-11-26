@@ -22,8 +22,8 @@
 
         <form action="ExamServlet" method="post">
             <c:forEach items="${Exam.getChoicesetList()}" var="set">
-                <div class="text-left bg-dark pl-2 mt-0">
-                    <span class="text-light pl-5"><h2>${set.getTitle()}</h2></span>
+                <div class="text-left bg-dark pt-3 pl-2 pb-2 pr-2">
+                    <span class="text-light"><h3>${set.getTitle()}</h3></span>
                 </div>
                 <div class="row text-center">
                     <table class="col-6 table table-striped">
