@@ -65,7 +65,7 @@ public class ExamServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        id = Integer.parseInt((String) request.getParameter("examid"));
+        id = Integer.parseInt(request.getParameter("examid"));
         ExamJpaController xc = new ExamJpaController(utx, emf);
         Exam exam = xc.findExam(id);
         request.setAttribute("Exam", exam);
