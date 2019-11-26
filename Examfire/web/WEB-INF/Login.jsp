@@ -45,11 +45,10 @@
                     <form class="form-group" action="Login" method="post">
 
                         <div class="form-group row">
-
-                            <label class="form-control-label text-light">Username : </label><input class="form-control" type="text" name="username">
+                            <label class="form-control-label text-light">Username : </label><input class="form-control" type="text" name="username" placeholder="Username">
                         </div>
                         <div class="form-group row">
-                            <label class="form-control-label text-light">Password : </label><input class="form-control" type="password" name="password">
+                            <label class="form-control-label text-light">Password : </label><input class="form-control" type="password" name="password" placeholder="Password">
                         </div>
                         
                         <input class="form-control btn btn-danger" type="submit" value="Login">
