@@ -52,10 +52,6 @@ public class ScoreServlet extends HttpServlet {
         ScoreController sc = new ScoreController();
         ExamJpaController ex = new ExamJpaController(utx, emf);
         Exam exam =ex.findExam(examid);
-        if(sc.findByUseridAndExamid(user, exam) == 0){
-            response.sendRedirect("/Examfire/ExamServlet?examid=" + examid);
-            return;
-        }
         int score = sc.findByUseridAndExamid(user, exam);
         
 //        request.setAttribute("user", user);
