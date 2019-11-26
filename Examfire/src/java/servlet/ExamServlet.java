@@ -110,7 +110,7 @@ public class ExamServlet extends HttpServlet {
         Users user = (Users) session.getAttribute("user");
         ScoreController sc = new ScoreController();
         sc.saveScore(user.getUserid(), score, id);
-        request.setAttribute("examid", id);
+        request.setAttribute("exam", exam);
         request.setAttribute("score", score);
         getServletContext().getRequestDispatcher("/WEB-INF/Score.jsp").forward(request, response);
         
