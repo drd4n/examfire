@@ -61,15 +61,25 @@ public class ExamServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    int id;
+    int examid;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        id = Integer.parseInt(request.getParameter("examid"));
-        ExamJpaController xc = new ExamJpaController(utx, emf);
-        Exam exam = xc.findExam(id);
-        request.setAttribute("Exam", exam);
+        examid = Integer.parseInt(request.getParameter("examid"));
+        HttpSession session = request.getSession(false);
+        Users user = (Users) session.getAttribute("user");
+        ExamJpaController ex = new ExamJpaController(utx, emf);
+        Exam exam =ex.findExam(examid);
+        ScoreController sc = new ScoreController();
+        if(sc.findByUseridAndExamid(user, exam) == 0){
+            request.setAttribute("Exam", exam);
         getServletContext().getRequestDispatcher("/WEB-INF/Exam.jsp").forward(request, response); 
+//            
+        }
+        response.sendRedirect("/Examfire/ExamServlet?examid=" + examid);
+            return;
+//        request.setAttribute("Exam", exam);
+//        getServletContext().getRequestDispatcher("/WEB-INF/Exam.jsp").forward(request, response); 
     }
 
     /**
@@ -84,7 +94,7 @@ public class ExamServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ExamJpaController xc = new ExamJpaController(utx, emf);
-        Exam exam = xc.findExam(id);
+        Exam exam = xc.findExam(examid);
         int answer = 0;
         int score = 0;
         int choiceCount;
@@ -109,7 +119,7 @@ public class ExamServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         Users user = (Users) session.getAttribute("user");
         ScoreController sc = new ScoreController();
-        sc.saveScore(user.getUserid(), score, id);
+        sc.saveScore(user.getUserid(), score, examid);
         request.setAttribute("exam", exam);
         request.setAttribute("score", score);
         getServletContext().getRequestDispatcher("/WEB-INF/Score.jsp").forward(request, response);

@@ -34,7 +34,7 @@
 
                         <td>
                             <div style="height: 40px; overflow:auto;">
-                                <a class="btn btn-dark text-light" href="/Examfire/Score?examid=${exs.getExamid()}"> ${exs.getExamtitle()}</a>
+                                <a class="btn btn-dark text-light" href="/Examfire/ExamServlet?examid=${exs.getExamid()}"> ${exs.getExamtitle()}</a>
                             </div>
                         </td>
                         
