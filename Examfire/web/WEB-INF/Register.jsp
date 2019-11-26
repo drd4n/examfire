@@ -33,23 +33,23 @@
             <form class="form-group" action="/Examfire/Register" method="post">
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right">Name :</label>
-                    <input class="form-control col-5" type="text" name="userfullname">
+                    <input class="form-control col-5" type="text" name="userfullname" required>
                 </div>
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right mt-4">E-Mail :</label>
-                    <input class="form-control col-5 mt-4" type="email" name="email">
+                    <input class="form-control col-5 mt-4" type="email" name="email" required>
                 </div>
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right mt-4">Username :</label>
-                    <input class="form-control col-5 mt-4" type="text" name="username">
+                    <input class="form-control col-5 mt-4" type="text" name="username" required>
                 </div>
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right mt-4">Password :</label>
-                    <input class="form-control col-5 mt-4" type="password" name="password">
+                    <input class="form-control col-5 mt-4" type="password" name="password" required>
                 </div>
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right mt-4">Confirm Password :</label>
-                    <input class="form-control col-5 mt-4" type="password" name="cfpassword">
+                    <input class="form-control col-5 mt-4" type="password" name="cfpassword"required>
                 </div>
                 <div class="row">            
                     <div class="col-4">
