@@ -17,7 +17,7 @@
         <div style="width: 100%;" class="bg-dark text-light">
             <span style="font-size: 30px;">All answer of ${examresult.getExamtitle()}</span>
         </div>
-            <div class="row text-center">
+            <div class="row text-center d-flex justify-content-center">
                 <c:forEach items="${examresult.getChoicesetList()}" var="set">
 
                     <table class="table table-striped">
@@ -45,7 +45,7 @@
                 </c:forEach>
             </div>
         <form action="Home" method="get">
-            <input type="submit" value="Back to home">
+            <input class="btn btn-primary" type="submit" value="Back to home">
         </form>
     </body>
 </html>
