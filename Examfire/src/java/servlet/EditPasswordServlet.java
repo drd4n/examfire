@@ -43,26 +43,11 @@ public class EditPasswordServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
         HttpSession ses =request.getSession(false);
         Users user = (Users) ses.getAttribute("user");
         
         String oldpassword = request.getParameter("oldpassword");
-        String newpassword = request.getParameter("newpassword");
+        String newpassword = request.getParameter("password");
         String cfpassword = request.getParameter("cfpassword");
         
         if(!(newpassword.equals(cfpassword))){
@@ -86,6 +71,21 @@ public class EditPasswordServlet extends HttpServlet {
                 Logger.getLogger(EditPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/WEB-INF/Profile.jsp").forward(request, response);
     }
 
     /**
