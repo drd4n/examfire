@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
         } else if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
             HttpSession ses = request.getSession();
             ses.setAttribute("user", user);
-            response.sendRedirect("/Examfire/Home");
+            getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
         }
         request.setAttribute("message", "Your username or password Wrong!");
         getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
