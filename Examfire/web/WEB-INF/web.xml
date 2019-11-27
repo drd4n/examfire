@@ -62,6 +62,10 @@
         <servlet-name>ResultServlet</servlet-name>
         <servlet-class>servlet.ResultServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditPasswordServlet</servlet-name>
+        <servlet-class>servlet.EditPasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -89,6 +93,10 @@
     <servlet-mapping>
         <servlet-name>ResultServlet</servlet-name>
         <url-pattern>/Result</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditPasswordServlet</servlet-name>
+        <url-pattern>/EditPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

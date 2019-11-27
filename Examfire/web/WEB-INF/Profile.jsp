@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Register
-    Created on : Nov 13, 2019, 9:06:15 PM
+    Document   : Profile
+    Created on : Nov 27, 2019, 7:33:14 PM
     Author     : Dan
 --%>
 
@@ -23,25 +23,32 @@
         </style>
     </head>
     <body class="bg-secondary">
-        <div class="text-center bg-dark justify-content-center" style="border-radius: 50px; margin: 80px 100px 0px 100px; padding: 50px 0px 50px 0px;">
+        <div class="text-center bg-dark justify-content-center" style="border-radius: 50px; margin: 30px 100px 0px 100px; padding: 50px 0px 50px 0px;">
             <div class="row">
                 <div class="col-4"></div>
                 <img src="images/EF_Logo.png" alt="examfire_logo" style="width: auto; height: 50px;">
-                <h1 class="col-1 text-light mb-4">Register</h1>
+                <h1 class="col-1 text-light mb-4">Profile</h1>
             </div>
-            <span class="text-light text-left">${message}</span>
-            <form class="form-group" action="/Examfire/Register" method="post">
+            <form class="form-group" action="/EditPassword" method="post">
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right">Full Name :</label>
-                    <input class="form-control col-5" type="text" name="userfullname" required>
+                    <span class="form-control col-5 input-group-text">${user.getUserfullname()}</span>
                 </div>
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right mt-4">E-Mail :</label>
-                    <input class="form-control col-5 mt-4" type="email" name="email" required>
+                    <span class="form-control col-5 input-group-text mt-3">${user.getEmail()}</span>
                 </div>
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right mt-4">Username :</label>
-                    <input class="form-control col-5 mt-4" type="text" name="username" required>
+                    <span class="form-control col-5 input-group-text mt-3">${user.getUsername()}</span>
+                </div>
+                <div class="row">                
+                    <span class="form-control-label text-light col-4 text-right mt-4" style="font-size: 24px;">Change password</span>
+                </div>
+                <span class="text-light text-left">${message}</span>
+                <div class="row">                
+                    <label class="form-control-label text-light col-4 text-right mt-4">Old Password :</label>
+                    <input class="form-control col-5 mt-4" type="password" name="oldpassword" required>
                 </div>
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right mt-4">Password :</label>
@@ -49,12 +56,13 @@
                 </div>
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right mt-4">Confirm Password :</label>
-                    <input class="form-control col-5 mt-4" type="password" name="cfpassword"required>
+                    <input class="form-control col-5 mt-4" type="password" name="cfpassword" required>
                 </div>
                 <div class="row">            
                     <div class="col-4">
                     </div>
-                    <input class="form-control btn btn-success col-5 mt-5" type="submit" value="Register!">
+                    <a href="/Examfire/Home" class="btn btn-primary col-2 mt-5" type="submit">Back to Home</a>
+                    <input class="form-control btn btn-success col-2 mt-5 ml-5" type="submit" value="Change Password">
                 </div>
 
 
