@@ -29,7 +29,7 @@
                 <img src="images/EF_Logo.png" alt="examfire_logo" style="width: auto; height: 50px;">
                 <h1 class="col-1 text-light mb-4">Profile</h1>
             </div>
-            <form class="form-group" action="EditPassword" method="post">
+            <form class="form-group" action="/EditPassword" method="post">
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right">Full Name :</label>
                     <span class="form-control col-5 input-group-text">${user.getUserfullname()}</span>

@@ -31,15 +31,11 @@
                 <img src="images/EF_Logo.png" width="40" alt="Examfire_logo">
                 <span style="font-size: 30px;">${user.getUserfullname()}</span> 
             </a>
-            <h2 class="text-light col-3" style="margin-right: -65px;">EXAMFIRE!</h2>
-            <div class="form-inline">
-            <form action="EditPassword" method="get">
-                <button class="btn btn-secondary text-light mr-4">Profile</button>
-            </form>
+            <h2 class="text-light col-3">EXAMFIRE!</h2>
+            
             <form class="form-inline mr-3" action="Logout" method="post">
                 <button class="btn btn-secondary text-light" type="sumbit">Logout</button>
             </form>
-            </div>
         </nav>
             <div class="text-center bg-dark">
                 <span class="text-light" style="font-size: 22px;">${message}
