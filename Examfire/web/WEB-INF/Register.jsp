@@ -32,7 +32,7 @@
             <span class="text-light text-left">${message}</span>
             <form class="form-group" action="/Examfire/Register" method="post">
                 <div class="row">                
-                    <label class="form-control-label text-light col-4 text-right">Full Name :</label>
+                    <label class="form-control-label text-light col-4 text-right">Name :</label>
                     <input class="form-control col-5" type="text" name="userfullname" required>
                 </div>
                 <div class="row">                
