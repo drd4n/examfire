@@ -34,7 +34,6 @@ import model.Exam;
  * @author Dan
  */
 public class ExamJpaController implements Serializable {
-    String FIND_BY_USERID = "select * from EXAMFIRE.EXAM where USERID = ?";
     public ExamJpaController(UserTransaction utx, EntityManagerFactory emf) {
         this.utx = utx;
         this.emf = emf;
