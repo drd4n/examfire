@@ -5,19 +5,16 @@
  */
 package controller.model;
 
-import controller.model.exceptions.IllegalOrphanException;
 import controller.model.exceptions.NonexistentEntityException;
 import controller.model.exceptions.RollbackFailureException;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import model.Exam;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.transaction.UserTransaction;
 import model.Users;
 
@@ -39,29 +36,11 @@ public class UsersJpaController implements Serializable {
     }
 
     public void create(Users users) throws RollbackFailureException, Exception {
-        if (users.getExamList() == null) {
-            users.setExamList(new ArrayList<Exam>());
-        }
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
-            List<Exam> attachedExamList = new ArrayList<Exam>();
-            for (Exam examListExamToAttach : users.getExamList()) {
-                examListExamToAttach = em.getReference(examListExamToAttach.getClass(), examListExamToAttach.getExamid());
-                attachedExamList.add(examListExamToAttach);
-            }
-            users.setExamList(attachedExamList);
             em.persist(users);
-            for (Exam examListExam : users.getExamList()) {
-                Users oldUseridOfExamListExam = examListExam.getUserid();
-                examListExam.setUserid(users);
-                examListExam = em.merge(examListExam);
-                if (oldUseridOfExamListExam != null) {
-                    oldUseridOfExamListExam.getExamList().remove(examListExam);
-                    oldUseridOfExamListExam = em.merge(oldUseridOfExamListExam);
-                }
-            }
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -77,45 +56,12 @@ public class UsersJpaController implements Serializable {
         }
     }
 
-    public void edit(Users users) throws IllegalOrphanException, NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(Users users) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
-            Users persistentUsers = em.find(Users.class, users.getUserid());
-            List<Exam> examListOld = persistentUsers.getExamList();
-            List<Exam> examListNew = users.getExamList();
-            List<String> illegalOrphanMessages = null;
-            for (Exam examListOldExam : examListOld) {
-                if (!examListNew.contains(examListOldExam)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain Exam " + examListOldExam + " since its userid field is not nullable.");
-                }
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
-            List<Exam> attachedExamListNew = new ArrayList<Exam>();
-            for (Exam examListNewExamToAttach : examListNew) {
-                examListNewExamToAttach = em.getReference(examListNewExamToAttach.getClass(), examListNewExamToAttach.getExamid());
-                attachedExamListNew.add(examListNewExamToAttach);
-            }
-            examListNew = attachedExamListNew;
-            users.setExamList(examListNew);
             users = em.merge(users);
-            for (Exam examListNewExam : examListNew) {
-                if (!examListOld.contains(examListNewExam)) {
-                    Users oldUseridOfExamListNewExam = examListNewExam.getUserid();
-                    examListNewExam.setUserid(users);
-                    examListNewExam = em.merge(examListNewExam);
-                    if (oldUseridOfExamListNewExam != null && !oldUseridOfExamListNewExam.equals(users)) {
-                        oldUseridOfExamListNewExam.getExamList().remove(examListNewExam);
-                        oldUseridOfExamListNewExam = em.merge(oldUseridOfExamListNewExam);
-                    }
-                }
-            }
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -138,7 +84,7 @@ public class UsersJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException, RollbackFailureException, Exception {
+    public void destroy(Integer id) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
@@ -149,17 +95,6 @@ public class UsersJpaController implements Serializable {
                 users.getUserid();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The users with id " + id + " no longer exists.", enfe);
-            }
-            List<String> illegalOrphanMessages = null;
-            List<Exam> examListOrphanCheck = users.getExamList();
-            for (Exam examListOrphanCheckExam : examListOrphanCheck) {
-                if (illegalOrphanMessages == null) {
-                    illegalOrphanMessages = new ArrayList<String>();
-                }
-                illegalOrphanMessages.add("This Users (" + users + ") cannot be destroyed since the Exam " + examListOrphanCheckExam + " in its examList field has a non-nullable userid field.");
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
             }
             em.remove(users);
             utx.commit();

@@ -5,20 +5,16 @@
  */
 package controller.model;
 
-import connection.database.DatabaseConnection;
 import controller.model.exceptions.IllegalOrphanException;
 import controller.model.exceptions.NonexistentEntityException;
 import controller.model.exceptions.RollbackFailureException;
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import model.Users;
 import model.Choiceset;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +30,7 @@ import model.Exam;
  * @author Dan
  */
 public class ExamJpaController implements Serializable {
+
     public ExamJpaController(UserTransaction utx, EntityManagerFactory emf) {
         this.utx = utx;
         this.emf = emf;
@@ -53,11 +50,6 @@ public class ExamJpaController implements Serializable {
         try {
             utx.begin();
             em = getEntityManager();
-            Users userid = exam.getUserid();
-            if (userid != null) {
-                userid = em.getReference(userid.getClass(), userid.getUserid());
-                exam.setUserid(userid);
-            }
             List<Choiceset> attachedChoicesetList = new ArrayList<Choiceset>();
             for (Choiceset choicesetListChoicesetToAttach : exam.getChoicesetList()) {
                 choicesetListChoicesetToAttach = em.getReference(choicesetListChoicesetToAttach.getClass(), choicesetListChoicesetToAttach.getChoicesetid());
@@ -65,10 +57,6 @@ public class ExamJpaController implements Serializable {
             }
             exam.setChoicesetList(attachedChoicesetList);
             em.persist(exam);
-            if (userid != null) {
-                userid.getExamList().add(exam);
-                userid = em.merge(userid);
-            }
             for (Choiceset choicesetListChoiceset : exam.getChoicesetList()) {
                 Exam oldExamidOfChoicesetListChoiceset = choicesetListChoiceset.getExamid();
                 choicesetListChoiceset.setExamid(exam);
@@ -99,8 +87,6 @@ public class ExamJpaController implements Serializable {
             utx.begin();
             em = getEntityManager();
             Exam persistentExam = em.find(Exam.class, exam.getExamid());
-            Users useridOld = persistentExam.getUserid();
-            Users useridNew = exam.getUserid();
             List<Choiceset> choicesetListOld = persistentExam.getChoicesetList();
             List<Choiceset> choicesetListNew = exam.getChoicesetList();
             List<String> illegalOrphanMessages = null;
@@ -115,10 +101,6 @@ public class ExamJpaController implements Serializable {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            if (useridNew != null) {
-                useridNew = em.getReference(useridNew.getClass(), useridNew.getUserid());
-                exam.setUserid(useridNew);
-            }
             List<Choiceset> attachedChoicesetListNew = new ArrayList<Choiceset>();
             for (Choiceset choicesetListNewChoicesetToAttach : choicesetListNew) {
                 choicesetListNewChoicesetToAttach = em.getReference(choicesetListNewChoicesetToAttach.getClass(), choicesetListNewChoicesetToAttach.getChoicesetid());
@@ -127,14 +109,6 @@ public class ExamJpaController implements Serializable {
             choicesetListNew = attachedChoicesetListNew;
             exam.setChoicesetList(choicesetListNew);
             exam = em.merge(exam);
-            if (useridOld != null && !useridOld.equals(useridNew)) {
-                useridOld.getExamList().remove(exam);
-                useridOld = em.merge(useridOld);
-            }
-            if (useridNew != null && !useridNew.equals(useridOld)) {
-                useridNew.getExamList().add(exam);
-                useridNew = em.merge(useridNew);
-            }
             for (Choiceset choicesetListNewChoiceset : choicesetListNew) {
                 if (!choicesetListOld.contains(choicesetListNewChoiceset)) {
                     Exam oldExamidOfChoicesetListNewChoiceset = choicesetListNewChoiceset.getExamid();
@@ -191,11 +165,6 @@ public class ExamJpaController implements Serializable {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            Users userid = exam.getUserid();
-            if (userid != null) {
-                userid.getExamList().remove(exam);
-                userid = em.merge(userid);
-            }
             em.remove(exam);
             utx.commit();
         } catch (Exception ex) {
@@ -211,7 +180,7 @@ public class ExamJpaController implements Serializable {
             }
         }
     }
-    
+
     public List<Exam> findExamEntities() {
         return findExamEntities(true, -1, -1);
     }
@@ -260,11 +229,12 @@ public class ExamJpaController implements Serializable {
     
     public Exam CastResultSetToExam(ResultSet rs){
         try {
-            Exam ex =new Exam(rs.getString("EXAMTITLE"));
+            Exam ex = new Exam(rs.getString("EXAMTITLE"));
             return ex;
         } catch (SQLException e) {
             Logger.getLogger(ExamJpaController.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
     }
+    
 }

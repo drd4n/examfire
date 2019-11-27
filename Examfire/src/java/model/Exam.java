@@ -56,6 +56,10 @@ public class Exam implements Serializable {
         this.examid = examid;
         this.examtitle = examtitle;
     }
+    
+    public Exam(String examtitle) {
+        this.examtitle = examtitle;
+    }
 
     public Integer getExamid() {
         return examid;
