@@ -49,13 +49,13 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         UsersJpaController uc = new UsersJpaController(utx, emf);
 
-        Users user = uc.findByUsername(username);
-        if (user == null) {
+        Users u = uc.findByUsername(username);
+        if (u == null) {
             request.setAttribute("message", "Your username or password Wrong!");
             getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
-        } else if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+        } else if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
             HttpSession ses = request.getSession();
-            ses.setAttribute("user", user);
+            ses.setAttribute("user", u);
             getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
         }
         request.setAttribute("message", "Your username or password Wrong!");
