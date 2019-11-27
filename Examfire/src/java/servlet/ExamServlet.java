@@ -72,12 +72,11 @@ public class ExamServlet extends HttpServlet {
         Exam exam =ex.findExam(examid);
         ScoreController sc = new ScoreController();
         if(sc.findByUseridAndExamid(user, exam) == 0){
-            request.setAttribute("Exam", exam);
+        request.setAttribute("Exam", exam);
         getServletContext().getRequestDispatcher("/WEB-INF/Exam.jsp").forward(request, response); 
-//            
-        }
-        response.sendRedirect("/Examfire/ExamServlet?examid=" + examid);
             return;
+        }
+        response.sendRedirect("/Examfire/Score?examid=" + examid);
 //        request.setAttribute("Exam", exam);
 //        getServletContext().getRequestDispatcher("/WEB-INF/Exam.jsp").forward(request, response); 
     }
