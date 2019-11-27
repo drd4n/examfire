@@ -53,9 +53,14 @@ public class EditPasswordServlet extends HttpServlet {
         if(!(newpassword.equals(cfpassword))){
             request.setAttribute("message", "Your new password not match");
             getServletContext().getRequestDispatcher("/WEB-INF/Profile.jsp").forward(request, response);
+        }
+        
+        if(user.getPassword().equals(oldpassword)){
+            if(cfpassword.equals(oldpassword)){
+            request.setAttribute("message", "Your new password and old password cannot be the same");
+            getServletContext().getRequestDispatcher("/WEB-INF/Profile.jsp").forward(request, response);
             return;
         }
-        if(user.getPassword().equals(oldpassword)){
             try {
                 user.setPassword(cfpassword);
                 UsersJpaController uc = new UsersJpaController(utx, emf);
@@ -71,6 +76,8 @@ public class EditPasswordServlet extends HttpServlet {
                 Logger.getLogger(EditPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        request.setAttribute("message", "Your old password Wrong!");
+        getServletContext().getRequestDispatcher("/WEB-INF/Profile.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
