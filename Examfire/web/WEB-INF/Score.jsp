@@ -33,7 +33,7 @@
                 </thead>
                 <tr>
                     <td>${exam.getExamtitle()}</td>
-                    <td>${score}</td>
+                    <td>${score}/${maxscore}</td>
                     <td><a href="/Examfire/Result?examid=${exam.getExamid()}" class="btn btn-primary active" role="button" aria-pressed="true">See Result</a></td>
                 </tr>
 

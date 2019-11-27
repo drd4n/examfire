@@ -8,6 +8,7 @@ package servlet;
 import controller.model.ExamJpaController;
 import controller.model.ScoreController;
 import java.io.IOException;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
+import model.Choiceset;
 import model.Exam;
 import model.Users;
 
@@ -53,10 +55,13 @@ public class ScoreServlet extends HttpServlet {
         ExamJpaController ex = new ExamJpaController(utx, emf);
         Exam exam =ex.findExam(examid);
         int score = sc.findByUseridAndExamid(user, exam);
+        List<Choiceset> allSetByExamid = exam.getChoicesetList();
+        int maxscore = (allSetByExamid.size())*4;
         
 //        request.setAttribute("user", user);
         request.setAttribute("exam", exam);
         request.setAttribute("score", score);
+        request.setAttribute("maxscore", maxscore);
         getServletContext().getRequestDispatcher("/WEB-INF/Score.jsp").forward(request, response);
     }
 
