@@ -56,10 +56,11 @@ public class RegisterServlet extends HttpServlet {
         
         UsersJpaController usc = new UsersJpaController(utx, emf);
         
-//        if(username.equals(usc.findByUsername(username).getUsername())){
-//            request.setAttribute("message", "This username used");
-//            getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").forward(request, response);
-//        }
+        if(username.equals(usc.findByUsername(username).getUsername())){
+            request.setAttribute("message", "This user already exist");
+            getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").forward(request, response);
+            return;
+        }
         
         Users u = new Users(username, password, userfullname, email);
         try {

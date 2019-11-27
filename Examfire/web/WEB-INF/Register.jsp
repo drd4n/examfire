@@ -23,13 +23,13 @@
         </style>
     </head>
     <body class="bg-secondary">
-        <h2>${message}</h2>
         <div class="text-center bg-dark justify-content-center" style="border-radius: 50px; margin: 80px 100px 0px 100px; padding: 50px 0px 50px 0px;">
             <div class="row">
                 <div class="col-4"></div>
                 <img src="images/EF_Logo.png" alt="examfire_logo" style="width: auto; height: 50px;">
-            <h1 class="col-1 text-light mb-4">Register</h1>
+                <h1 class="col-1 text-light mb-4">Register</h1>
             </div>
+            <span class="text-light text-left">${message}</span>
             <form class="form-group" action="/Examfire/Register" method="post">
                 <div class="row">                
                     <label class="form-control-label text-light col-4 text-right">Name :</label>

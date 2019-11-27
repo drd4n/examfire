@@ -5,10 +5,17 @@
  */
 package controller.model;
 
+import connection.database.DatabaseConnection;
 import controller.model.exceptions.NonexistentEntityException;
 import controller.model.exceptions.RollbackFailureException;
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -24,6 +31,8 @@ import model.Users;
  */
 public class UsersJpaController implements Serializable {
 
+    String FIND_BY_USERNAME = "select * from EXAMFIRE.USERS where USERNAME= ? ";
+    
     public UsersJpaController(UserTransaction utx, EntityManagerFactory emf) {
         this.utx = utx;
         this.emf = emf;
@@ -156,6 +165,24 @@ public class UsersJpaController implements Serializable {
         } finally {
             em.close();
         }
+    }
+    
+    public Users findByUsername(String username){
+        Users u = null;
+        try {
+            Connection con = DatabaseConnection.getConnection();
+            PreparedStatement pst= con.prepareStatement(FIND_BY_USERNAME);
+            pst.setString(1, username);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                    u = new Users(username, rs.getString("PASSWORD"), rs.getString("USERFULLNAME"), rs.getString("EMAIL"));
+                }
+                pst.close();
+                con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersJpaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return u;
     }
     
 }
