@@ -5,11 +5,13 @@
  */
 package servlet;
 
+import controller.model.ExamJpaController;
+import controller.model.ScoreController;
 import controller.model.UsersJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -17,15 +19,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
+import model.Exam;
 import model.Users;
 
 /**
  *
  * @author Dan
  */
-public class RegisterServlet extends HttpServlet {
-    @PersistenceUnit(name = "ExamfirePU")
+public class HomeServlet extends HttpServlet {
+@PersistenceUnit(name = "ExamfirePU")
     EntityManagerFactory emf;
 
     @Resource
@@ -42,38 +46,7 @@ public class RegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String password = request.getParameter("password");
-        String cfpassword = request.getParameter("cfpassword");
         
-        if(!(password.equals(cfpassword))){
-            request.setAttribute("message", "Confirm your password do not match");
-            getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").forward(request, response);
-        }
-        
-        String userfullname = request.getParameter("userfullname");
-        String username = request.getParameter("username");
-        String email = request.getParameter("email");
-        
-        UsersJpaController usc = new UsersJpaController(utx, emf);
-        
-        if(username.equals(usc.findByUsername(username).getUsername())){
-            request.setAttribute("message", "This user already exist");
-            getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").forward(request, response);
-            return;
-        }
-        
-        Users u = new Users(username, password, userfullname, email);
-        try {
-            usc.create(u);
-            request.setAttribute("message", "Register Sussesfully");
-            getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
-            
-        } catch (Exception ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        request.setAttribute("message", "Register Sus ses ful ly");
-        getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -88,7 +61,24 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+        Users user = (Users) session.getAttribute("user");
+        ExamJpaController xc = new ExamJpaController(utx, emf);
+        List<Exam> exams = xc.findExamEntities();
+        request.setAttribute("exams", exams);
+        
+        ArrayList<Integer> scores = new ArrayList<>();
+        for (int i = 0; i < exams.size(); i++) {
+            ScoreController sc = new ScoreController();
+            scores.add(sc.findByUseridAndExamid(user, exams.get(i)));
+        }
+        request.setAttribute("scores", scores);
+        
+//        ScoreController sc = new ScoreController();
+//        ArrayList<Integer> scores =sc.findScoreEntitiesByUserid(user);
+//        request.setAttribute("scores", scores);
+        
+        getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
     }
 
     /**

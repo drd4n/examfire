@@ -5,11 +5,9 @@
  */
 package servlet;
 
-import controller.model.UsersJpaController;
+import controller.model.ExamJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -18,17 +16,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.UserTransaction;
-import model.Users;
+import model.Exam;
 
 /**
  *
  * @author Dan
  */
-public class RegisterServlet extends HttpServlet {
-    @PersistenceUnit(name = "ExamfirePU")
+public class ResultServlet extends HttpServlet {
+@PersistenceUnit(name = "ExamfirePU")
     EntityManagerFactory emf;
 
-    @Resource
+@Resource
     UserTransaction utx;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,38 +40,12 @@ public class RegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String password = request.getParameter("password");
-        String cfpassword = request.getParameter("cfpassword");
-        
-        if(!(password.equals(cfpassword))){
-            request.setAttribute("message", "Confirm your password do not match");
-            getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").forward(request, response);
-        }
-        
-        String userfullname = request.getParameter("userfullname");
-        String username = request.getParameter("username");
-        String email = request.getParameter("email");
-        
-        UsersJpaController usc = new UsersJpaController(utx, emf);
-        
-        if(username.equals(usc.findByUsername(username).getUsername())){
-            request.setAttribute("message", "This user already exist");
-            getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").forward(request, response);
-            return;
-        }
-        
-        Users u = new Users(username, password, userfullname, email);
-        try {
-            usc.create(u);
-            request.setAttribute("message", "Register Sussesfully");
-            getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
-            
-        } catch (Exception ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        request.setAttribute("message", "Register Sus ses ful ly");
-        getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
+        int examid = Integer.parseInt(request.getParameter("examid"));
+        ExamJpaController ec = new ExamJpaController(utx, emf);
+        Exam exam = ec.findExam(examid);
+        request.setAttribute("examresult", exam);
+        request.setAttribute("examid", examid);
+        getServletContext().getRequestDispatcher("/WEB-INF/Result.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -88,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

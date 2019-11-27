@@ -31,11 +31,11 @@ public class LogoutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-            
-        HttpSession session = request.getSession(false);
-        session.invalidate();
-        request.setAttribute("message", "Logged out Successfully");
-        getServletContext().getRequestDispatcher("/WEB-INF/view/Login.jsp").forward(request, response);
+        HttpSession ses =request.getSession(false);
+        ses.invalidate();
+        response.sendRedirect("/Examfire/Login");
+        return;
+//        request.getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -4,16 +4,65 @@
     Author     : Dan
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="shortcut icon" href="images/EF_Favicon.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Examfire Home</title>
-         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <title>'s Home</title>
+
+
     </head>
-    <body>
-        <h1>Welcome to Examfire!</h1>
+    <body class="bg-light">
+        <jsp:include page="/WEB-INF/Header.jsp" />
+        
+        <div class="row text-center">
+
+            <table class="col-6 table table-striped">
+
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Title</th>
+                       
+                    </tr>
+
+                </thead>
+                <c:forEach items="${exams}" var="exs">  
+                    <tr>
+
+                        <td>
+                            <div style="height: 40px; overflow:auto;">
+                                <a class="btn btn-dark text-light" href="/Examfire/ExamServlet?examid=${exs.getExamid()}"> ${exs.getExamtitle()}</a>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                </c:forEach>
+            </table>
+            <table class="col-6 table table-striped">
+
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Score</th>
+                    </tr>
+
+                </thead>
+                <c:forEach items="${scores}" var="scores" varStatus="i">  
+                    <tr>
+
+                        <td>
+                            <div style="height: 40px; overflow:auto;">
+                                ${scores}
+                            </div>
+                        </td>
+
+                    </tr>
+                </c:forEach>
+            </table>
+
+        </div>
+        
     </body>
 </html>
