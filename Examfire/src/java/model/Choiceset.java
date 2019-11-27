@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Dan
+ * @author ZolyKana
  */
 @Entity
 @XmlRootElement
@@ -93,7 +93,7 @@ public class Choiceset implements Serializable {
         Collections.shuffle(shuffle);
         return shuffle;
     }
-    
+
     public void setChoiceList(List<Choice> choiceList) {
         this.choiceList = choiceList;
     }

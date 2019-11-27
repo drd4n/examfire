@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -25,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Dan
+ * @author ZolyKana
  */
 @Entity
 @XmlRootElement
@@ -46,19 +44,12 @@ public class Exam implements Serializable {
     private String examtitle;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "examid")
     private List<Choiceset> choicesetList;
-    @JoinColumn(name = "USERID", referencedColumnName = "USERID")
-    @ManyToOne(optional = false)
-    private Users userid;
 
     public Exam() {
     }
 
     public Exam(Integer examid) {
         this.examid = examid;
-    }
-
-    public Exam(String examtitle) {
-        this.examtitle = examtitle;
     }
 
     public Exam(Integer examid, String examtitle) {
@@ -91,14 +82,6 @@ public class Exam implements Serializable {
         this.choicesetList = choicesetList;
     }
 
-    public Users getUserid() {
-        return userid;
-    }
-
-    public void setUserid(Users userid) {
-        this.userid = userid;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -123,5 +106,5 @@ public class Exam implements Serializable {
     public String toString() {
         return "model.Exam[ examid=" + examid + " ]";
     }
-
+    
 }
