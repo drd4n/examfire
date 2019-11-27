@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-file class diagram">
+  <ClassDiagramComponents>
+    <Class name="ExamServlet" package="servlet" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+        <Field name="examid" type="int" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+        <Method name="String" returnType="String" visibility="private">
+          <Argument type="Integer" name="choicesetid"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="HomeServlet" package="servlet" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LoginServlet" package="servlet" visibility="public" xPosition="540.0" yPosition="447.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LogoutServlet" package="servlet" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RegisterServlet" package="servlet" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ResultServlet" package="servlet" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ScoreServlet" package="servlet" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

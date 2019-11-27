@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-file class diagram">
+  <ClassDiagramComponents>
+    <Class name="ExamServlet" package="servlet" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+        <Field name="examid" type="int" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+        <Method name="String" returnType="String" visibility="private">
+          <Argument type="Integer" name="choicesetid"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="HomeServlet" package="servlet" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LoginServlet" package="servlet" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LogoutServlet" package="servlet" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RegisterServlet" package="servlet" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ResultServlet" package="servlet" visibility="public" xPosition="1795.0" yPosition="6.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ScoreServlet" package="servlet" visibility="public" xPosition="1399.0" yPosition="203.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="UsersJpaController" package="controller.model" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="FIND_BY_USERNAME" type="String" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="private"/>
+        <Field name="emf" type="EntityManagerFactory" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="UserTransaction" name="utx"/>
+          <Argument type="EntityManagerFactory" name="emf"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="public"/>
+        <Method name="create" returnType="void" visibility="public">
+          <Argument type="Users" name="users"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="public">
+          <Argument type="Users" name="users"/>
+        </Method>
+        <Method name="destroy" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="findUsersEntities" returnType="List&lt;Users&gt;" visibility="public"/>
+        <Method name="findUsersEntities" returnType="List&lt;Users&gt;" visibility="public">
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findUsersEntities" returnType="List&lt;Users&gt;" visibility="private">
+          <Argument type="boolean" name="all"/>
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findUsers" returnType="Users" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getUsersCount" returnType="int" visibility="public"/>
+        <Method name="findByUsername" returnType="Users" visibility="public">
+          <Argument type="String" name="username"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ScoreController" package="controller.model" visibility="public" xPosition="53.0" yPosition="883.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="utx" type="UserTransaction" visibility="package"/>
+        <Field name="Find_By_Userid_Examid" type="String" visibility="package"/>
+        <Field name="Save_Score" type="String" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="findByUseridAndExamid" returnType="int" visibility="public">
+          <Argument type="Users" name="user"/>
+          <Argument type="Exam" name="exam"/>
+        </Method>
+        <Method name="saveScore" returnType="void" visibility="public">
+          <Argument type="int" name="userid"/>
+          <Argument type="int" name="userscore"/>
+          <Argument type="int" name="examid"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ChoiceJpaController" package="controller.model" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="utx" type="UserTransaction" visibility="private"/>
+        <Field name="emf" type="EntityManagerFactory" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="UserTransaction" name="utx"/>
+          <Argument type="EntityManagerFactory" name="emf"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="public"/>
+        <Method name="create" returnType="void" visibility="public">
+          <Argument type="Choice" name="choice"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="public">
+          <Argument type="Choice" name="choice"/>
+        </Method>
+        <Method name="destroy" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="findChoiceEntities" returnType="List&lt;Choice&gt;" visibility="public"/>
+        <Method name="findChoiceEntities" returnType="List&lt;Choice&gt;" visibility="public">
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findChoiceEntities" returnType="List&lt;Choice&gt;" visibility="private">
+          <Argument type="boolean" name="all"/>
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findChoice" returnType="Choice" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getChoiceCount" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ExamJpaController" package="controller.model" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="utx" type="UserTransaction" visibility="private"/>
+        <Field name="emf" type="EntityManagerFactory" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="UserTransaction" name="utx"/>
+          <Argument type="EntityManagerFactory" name="emf"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="public"/>
+        <Method name="create" returnType="void" visibility="public">
+          <Argument type="Exam" name="exam"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="public">
+          <Argument type="Exam" name="exam"/>
+        </Method>
+        <Method name="destroy" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="findExamEntities" returnType="List&lt;Exam&gt;" visibility="public"/>
+        <Method name="findExamEntities" returnType="List&lt;Exam&gt;" visibility="public">
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findExamEntities" returnType="List&lt;Exam&gt;" visibility="private">
+          <Argument type="boolean" name="all"/>
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findExam" returnType="Exam" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getExamCount" returnType="int" visibility="public"/>
+        <Method name="CastResultSetToExam" returnType="Exam" visibility="public">
+          <Argument type="ResultSet" name="rs"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ChoicesetJpaController" package="controller.model" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="utx" type="UserTransaction" visibility="private"/>
+        <Field name="emf" type="EntityManagerFactory" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="UserTransaction" name="utx"/>
+          <Argument type="EntityManagerFactory" name="emf"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="public"/>
+        <Method name="create" returnType="void" visibility="public">
+          <Argument type="Choiceset" name="choiceset"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="public">
+          <Argument type="Choiceset" name="choiceset"/>
+        </Method>
+        <Method name="destroy" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="findChoicesetEntities" returnType="List&lt;Choiceset&gt;" visibility="public"/>
+        <Method name="findChoicesetEntities" returnType="List&lt;Choiceset&gt;" visibility="public">
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findChoicesetEntities" returnType="List&lt;Choiceset&gt;" visibility="private">
+          <Argument type="boolean" name="all"/>
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findChoiceset" returnType="Choiceset" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getChoicesetCount" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Users" package="model" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="userid" type="Integer" visibility="private"/>
+        <Field name="username" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="userfullname" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="userid"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="userid"/>
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="userfullname"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="userfullname"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getUserid" returnType="Integer" visibility="public"/>
+        <Method name="setUserid" returnType="void" visibility="public">
+          <Argument type="Integer" name="userid"/>
+        </Method>
+        <Method name="getUsername" returnType="String" visibility="public"/>
+        <Method name="setUsername" returnType="void" visibility="public">
+          <Argument type="String" name="username"/>
+        </Method>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="getUserfullname" returnType="String" visibility="public"/>
+        <Method name="setUserfullname" returnType="void" visibility="public">
+          <Argument type="String" name="userfullname"/>
+        </Method>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Choiceset" package="model" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="choicesetid" type="Integer" visibility="private"/>
+        <Field name="title" type="String" visibility="private"/>
+        <Field name="choiceList" type="List&lt;Choice&gt;" visibility="private"/>
+        <Field name="examid" type="Exam" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="choicesetid"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="choicesetid"/>
+          <Argument type="String" name="title"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getChoicesetid" returnType="Integer" visibility="public"/>
+        <Method name="setChoicesetid" returnType="void" visibility="public">
+          <Argument type="Integer" name="choicesetid"/>
+        </Method>
+        <Method name="getTitle" returnType="String" visibility="public"/>
+        <Method name="setTitle" returnType="void" visibility="public">
+          <Argument type="String" name="title"/>
+        </Method>
+        <Method name="getChoiceList" returnType="List&lt;Choice&gt;" visibility="public"/>
+        <Method name="getShuffleChoice" returnType="List&lt;Choice&gt;" visibility="public"/>
+        <Method name="setChoiceList" returnType="void" visibility="public">
+          <Argument type="List&lt;Choice&gt;" name="choiceList"/>
+        </Method>
+        <Method name="getExamid" returnType="Exam" visibility="public"/>
+        <Method name="setExamid" returnType="void" visibility="public">
+          <Argument type="Exam" name="examid"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Exam" package="model" visibility="public" xPosition="845.0" yPosition="674.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="examid" type="Integer" visibility="private"/>
+        <Field name="examtitle" type="String" visibility="private"/>
+        <Field name="choicesetList" type="List&lt;Choiceset&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="examid"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="examid"/>
+          <Argument type="String" name="examtitle"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="examtitle"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getExamid" returnType="Integer" visibility="public"/>
+        <Method name="setExamid" returnType="void" visibility="public">
+          <Argument type="Integer" name="examid"/>
+        </Method>
+        <Method name="getExamtitle" returnType="String" visibility="public"/>
+        <Method name="setExamtitle" returnType="void" visibility="public">
+          <Argument type="String" name="examtitle"/>
+        </Method>
+        <Method name="getChoicesetList" returnType="List&lt;Choiceset&gt;" visibility="public"/>
+        <Method name="setChoicesetList" returnType="void" visibility="public">
+          <Argument type="List&lt;Choiceset&gt;" name="choicesetList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Choice" package="model" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="choiceid" type="Integer" visibility="private"/>
+        <Field name="question" type="String" visibility="private"/>
+        <Field name="answer" type="String" visibility="private"/>
+        <Field name="choicesetid" type="Choiceset" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="choiceid"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="choiceid"/>
+          <Argument type="String" name="question"/>
+          <Argument type="String" name="answer"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getChoiceid" returnType="Integer" visibility="public"/>
+        <Method name="setChoiceid" returnType="void" visibility="public">
+          <Argument type="Integer" name="choiceid"/>
+        </Method>
+        <Method name="getQuestion" returnType="String" visibility="public"/>
+        <Method name="setQuestion" returnType="void" visibility="public">
+          <Argument type="String" name="question"/>
+        </Method>
+        <Method name="getAnswer" returnType="String" visibility="public"/>
+        <Method name="setAnswer" returnType="void" visibility="public">
+          <Argument type="String" name="answer"/>
+        </Method>
+        <Method name="getChoicesetid" returnType="Choiceset" visibility="public"/>
+        <Method name="setChoicesetid" returnType="void" visibility="public">
+          <Argument type="Choiceset" name="choicesetid"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="controller.model.ExamJpaController" target="model.Exam" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="choicesetid" source="model.Choice" target="model.Choiceset" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.Choice" target="model.Choice" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controller.model.ChoicesetJpaController" target="model.Choice" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.Exam" target="model.Choice" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="choicesetList" source="model.Exam" target="model.Choiceset" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Choiceset&gt;"/>
+    <UseRelation source="controller.model.UsersJpaController" target="model.Users" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="choiceList" source="model.Choiceset" target="model.Choice" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Choice&gt;"/>
+    <UseRelation source="controller.model.ChoiceJpaController" target="model.Choice" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.Choiceset" target="model.Exam" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="examid" source="model.Choiceset" target="model.Exam" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.Choiceset" target="model.Choice" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controller.model.ScoreController" target="model.Exam" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
