@@ -50,5 +50,6 @@ ALTER TABLE choice ADD CONSTRAINT Choice_fk0 FOREIGN KEY (choicesetid) REFERENCE
 ALTER TABLE choiceset ADD CONSTRAINT Choiceset_fk0 FOREIGN KEY (examid) REFERENCES Exam(examid);
 
 
-insert into Users (username, password, userfullname, email) values ('deafinealy', 'quisque', 'Deafinealy Dope', 'dopeme@hotmail.co.th');
-insert into Users (username, password, userfullname, email) values ('babba', 'quam', 'Babba Gump', 'babbagumpcompany@gmail.com');
+
+
+
