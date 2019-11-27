@@ -57,13 +57,15 @@ public class LoginServlet extends HttpServlet {
                     HttpSession ses = request.getSession();
                     ses.setAttribute("user", usr);
                     response.sendRedirect("/Examfire/Home");
+                    return;
                 }
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             request.setAttribute("message", "Your username or password Wrong!");
             getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
         }
-
+            request.setAttribute("message", "Your username or password Wrong!");
+            getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
